@@ -49,7 +49,7 @@
     }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-logo { width: 44px; height: 44px; border-radius: 8px; object-fit: contain; }
-    .brand-text h1 { font-size: 1.2rem; font-weight: 800; color: var(--primary-dark); line-height: 1.2; }
+    .brand-text h1 { font-size: 1.15rem; font-weight: 800; color: var(--primary-dark); line-height: 1.2; }
     .brand-text p { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
     /* Container */
@@ -202,7 +202,6 @@
       font-size: 0.9rem;
     }
     .btn-delete { color: var(--danger); border-color: #fecaca; }
-    .btn-delete:active { background: #fee2e2; }
     .btn-edit { color: var(--primary); border-color: #bae6fd; }
 
     .student-entry-bottom {
@@ -548,13 +547,13 @@
     .banner-row:nth-child(3) { background: #ffedd5; border-color: #fed7aa; font-weight: 700; }
     .banner-footer-auth {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       border-top: 1.5px dashed #cbd5e1;
       padding-top: 10px;
-      font-size: 0.78rem;
-      color: #64748b;
-      font-weight: 700;
+      font-size: 0.85rem;
+      color: #0369a1;
+      font-weight: 800;
     }
 
     .table-responsive { overflow-x: auto; margin-top: 10px; }
@@ -586,7 +585,7 @@
     <div class="brand-wrap">
       <img src="logo.jpeg" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
       <div class="brand-text">
-        <h1>पंचायत समिती माजलगाव</h1>
+        <h1>शिक्षण विभाग, पंचायत समिती माजलगाव</h1>
         <p>सराव परीक्षा संकलन व डॅशबोर्ड</p>
       </div>
     </div>
@@ -690,6 +689,9 @@
       <!-- २. नवीन विद्यार्थी वाढवा / जोडा -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-user-plus"></i> २. नवीन विद्यार्थी वाढवा / जोडा</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">
+          * सूचना: एकदा जोडलेले नाव खालील यादीत कायम दिसेल. नाव कमी करण्यासाठी किंवा दुरुस्त करण्यासाठी खालील यादीत पर्याय दिले आहेत.
+        </p>
         <div class="grid-2">
           <div class="form-group">
             <label>प्रथम नाव</label>
@@ -747,7 +749,7 @@
 
   <!-- ================= MODALS ================= -->
 
-  <!-- १. प्रलंबित शाळा ट्रॅकर Modal (पूर्ण यादी + WhatsApp कॉपी) -->
+  <!-- १. प्रलंबित शाळा ट्रॅकर Modal -->
   <div class="modal" id="pendingSchoolsModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -755,7 +757,6 @@
         <button onclick="closeModal('pendingSchoolsModal')" style="border:none; background:none; font-size:1.4rem; cursor:pointer;">&times;</button>
       </div>
       
-      <!-- Cluster Filter for Pending -->
       <div style="margin-bottom: 10px;">
         <select id="pending-cluster-filter" class="form-control" style="height:38px; font-size:0.85rem;" onchange="renderPendingSchoolsList()">
           <option value="all">-- सर्व केंद्रांमधील प्रलंबित शाळा --</option>
@@ -763,7 +764,7 @@
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <p style="font-size:0.82rem; color:#64748b; font-weight:700;" id="pending-subtitle">चाचणी १: एकूण ० शाळा प्रलंबित</p>
+        <p style="font-size:0.82rem; color:#64748b; font-weight:700;" id="pending-subtitle">चालू चाचणी: एकूण ० शाळा प्रलंबित</p>
         <button class="app-btn btn-outline" style="width:auto; height:32px; font-size:0.75rem; padding:0 10px;" onclick="copyPendingWhatsAppMessage()">
           <i class="fa-solid fa-copy"></i> WhatsApp मेसेज कॉपी
         </button>
@@ -824,14 +825,13 @@
           <div style="text-align:center;">
             <div class="banner-top-badge">💐 हार्दिक अभिनंदन ! हार्दिक अभिनंदन ! 💐</div>
             <h2 class="banner-heading-main" id="banner-heading-text">माजलगाव तालुका सराव परीक्षा टॉपर्स</h2>
-            <p class="banner-subheading" id="banner-sub-text">चाचणी क्र. १ | गुणवत्ता यादी (Top 10)</p>
+            <p class="banner-subheading" id="banner-sub-text">चाचणी निकाल | गुणवत्ता यादी (Top 10)</p>
           </div>
 
           <div class="banner-topper-grid" id="banner-toppers-list"></div>
 
           <div class="banner-footer-auth">
-            <span>🎯 प्रेरणा: गटशिक्षणाधिकारी, पं. स. माजलगाव</span>
-            <span>समस्त शिक्षण विभाग, माजलगाव</span>
+            <span>शिक्षण विभाग, पंचायत समिती माजलगाव</span>
           </div>
         </div>
       </div>
@@ -1012,8 +1012,27 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
+    /* ================= तारीख व शनिवार शिफ्टनुसार आपोआप चाचणी क्रमांक काढणे ================= */
+    function getAutoActiveTest(category) {
+      // बेस तारीख: शनिवार, १० ऑक्टोबर २०२६
+      // या आठवड्यात नवोदय: चाचणी ६, इतर तीन परीक्षा: चाचणी ८
+      const baseDate = new Date(2026, 9, 10); // Month is 0-indexed: 9 = October
+      const today = new Date();
+      
+      const diffMs = today.getTime() - baseDate.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const passedWeeks = diffDays >= 0 ? Math.floor(diffDays / 7) : 0;
+
+      let baseTest = (category === 'navodaya') ? 6 : 8;
+      let calculatedTest = baseTest + passedWeeks;
+
+      if (calculatedTest > 10) calculatedTest = 10;
+      if (calculatedTest < 1) calculatedTest = 1;
+      return calculatedTest;
+    }
+
     let currentSelectedCategory = 'navodaya';
-    let currentSelectedTest = 1;
+    let currentSelectedTest = getAutoActiveTest('navodaya');
     let currentSelectedCluster = 'all';
 
     let currentEntryCategory = 'navodaya';
@@ -1043,6 +1062,13 @@
       document.getElementById('screen-entry').style.display = view === 'entry' ? 'block' : 'none';
       document.getElementById('nav-btn-dash').classList.toggle('active', view === 'dashboard');
       document.getElementById('nav-btn-entry').classList.toggle('active', view === 'entry');
+      
+      if (view === 'entry') {
+        // गुण भरा टॅबवर गेल्यावर चालू आठवड्याची चाचणी बाय-डिफॉल्ट सेट करणे
+        const autoTest = getAutoActiveTest(currentEntryCategory);
+        document.getElementById('entry-test-no').value = autoTest;
+        loadStudentMarksForSelectedTest();
+      }
       window.scrollTo(0, 0);
     }
 
@@ -1057,15 +1083,16 @@
       const cont = document.getElementById('dash-test-pills');
       cont.innerHTML = '';
       for (let i = 1; i <= 10; i++) {
-        cont.innerHTML += `<button class="test-chip ${i===1?'active':''}" onclick="selectTest(${i}, this)">चाचणी ${i}</button>`;
+        cont.innerHTML += `<button class="test-chip ${i === currentSelectedTest ? 'active' : ''}" onclick="selectTest(${i}, this)">चाचणी ${i}</button>`;
       }
     }
 
     function buildEntryTestOptions() {
       const select = document.getElementById('entry-test-no');
       select.innerHTML = '';
+      const autoTest = getAutoActiveTest(currentEntryCategory);
       for (let i = 1; i <= 10; i++) {
-        select.innerHTML += `<option value="${i}">चाचणी क्रमांक ${i}</option>`;
+        select.innerHTML += `<option value="${i}" ${i === autoTest ? 'selected' : ''}>चाचणी क्रमांक ${i}</option>`;
       }
     }
 
@@ -1073,6 +1100,10 @@
       document.querySelectorAll('#screen-dashboard .category-chip').forEach(c => c.classList.remove('active'));
       el.classList.add('active');
       currentSelectedCategory = cat;
+      
+      // परीक्षा बदलल्यास चालू आठवड्याचा चाचणी क्रमांक आपोआप निवडणे
+      currentSelectedTest = getAutoActiveTest(cat);
+      buildDashboardTestPills();
       listenLiveDashboardData();
     }
 
@@ -1105,6 +1136,11 @@
       currentEntryCategory = cat;
       document.querySelectorAll('#screen-entry .category-chip').forEach(c => c.classList.remove('active'));
       document.getElementById(`entry-chip-${cat}`).classList.add('active');
+      
+      // गुण भरा मध्येही आपोआप चालू चाचणी निवडणे
+      const autoTest = getAutoActiveTest(cat);
+      document.getElementById('entry-test-no').value = autoTest;
+
       resetSchoolLock();
       onClusterSelected();
     }
@@ -1515,7 +1551,7 @@
         'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा (इ. ८ वी)'
       };
 
-      let msg = `*📢 पंचायत समिती माजलगाव - शिक्षण विभाग*\n`;
+      let msg = `*📢 शिक्षण विभाग, पंचायत समिती माजलगाव*\n`;
       msg += `*विषय: ${examNames[currentSelectedCategory]} - चाचणी क्र. ${currentSelectedTest} निकाल भरणेबाबत*\n\n`;
       msg += `खालील शाळांनी अद्याप सराव चाचणी पोर्टलवर निकाल भरलेला नाही. कृपया संबंधित मुख्याध्यापकांनी तात्काळ गुण भरून लॉक करावेत:\n\n`;
 
@@ -1524,7 +1560,7 @@
       });
 
       msg += `\n*एकूण प्रलंबित शाळा:* ${list.length}\n`;
-      msg += `*प्रेरणा:* गटशिक्षणाधिकारी, पं. स. माजलगाव`;
+      msg += `*शिक्षण विभाग, पंचायत समिती माजलगाव*`;
 
       navigator.clipboard.writeText(msg).then(() => {
         showToast('WhatsApp मेसेज कॉपी झाला!');
@@ -1659,7 +1695,7 @@
         const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
         const imgWidth = 277;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight, undefined, 'FAST');
+        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight);
         const stdName = document.getElementById('cert-std-name').innerText.trim() || 'Student';
         pdf.save(`Certificate_${stdName}.pdf`);
         showToast('प्रमाणपत्र PDF डाऊनलोड झाले!');
