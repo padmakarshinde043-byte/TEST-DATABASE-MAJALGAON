@@ -108,21 +108,34 @@
       box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
     }
 
-    /* Test Pills */
-    .test-pill-wrap { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+    /* Test Pills Container with Smooth Scroll */
+    .test-pill-wrap {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
     .test-pill-wrap::-webkit-scrollbar { display: none; }
     .test-chip {
       flex: 0 0 auto;
       background: white;
       border: 1.5px solid var(--border);
-      padding: 7px 15px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 22px;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.2s;
     }
-    .test-chip.active { background: var(--primary-dark); color: white; border-color: var(--primary-dark); }
+    .test-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
+    }
 
     /* Form Inputs */
     .form-group { margin-bottom: 12px; display: flex; flex-direction: column; gap: 5px; }
@@ -165,7 +178,7 @@
     .btn-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
     .btn-danger { background: var(--danger); color: white; }
 
-    /* Student Entry Cards with Attendance */
+    /* Student Entry Cards */
     .student-entry-card {
       background: #f8fafc;
       border: 1.5px solid var(--border);
@@ -184,11 +197,7 @@
     .student-entry-info h4 { font-size: 1rem; font-weight: 700; }
     .student-entry-info span { font-size: 0.8rem; color: var(--text-muted); }
     
-    .student-action-btns {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .student-action-btns { display: flex; align-items: center; gap: 6px; }
     .btn-icon-action {
       width: 34px;
       height: 34px;
@@ -202,6 +211,7 @@
       font-size: 0.9rem;
     }
     .btn-delete { color: var(--danger); border-color: #fecaca; }
+    .btn-delete:active { background: #fee2e2; }
     .btn-edit { color: var(--primary); border-color: #bae6fd; }
 
     .student-entry-bottom {
@@ -369,7 +379,7 @@
       overflow-y: auto;
     }
 
-    /* प्रमाणपत्र */
+    /* प्रमाणपत्र रेंडर बॉक्स */
     .cert-container-box {
       position: relative;
       width: 740px;
@@ -1016,7 +1026,7 @@
     function getAutoActiveTest(category) {
       // बेस तारीख: शनिवार, १० ऑक्टोबर २०२६
       // या आठवड्यात नवोदय: चाचणी ६, इतर तीन परीक्षा: चाचणी ८
-      const baseDate = new Date(2026, 9, 10); // Month is 0-indexed: 9 = October
+      const baseDate = new Date(2026, 9, 10); // 9 = October
       const today = new Date();
       
       const diffMs = today.getTime() - baseDate.getTime();
@@ -1064,7 +1074,6 @@
       document.getElementById('nav-btn-entry').classList.toggle('active', view === 'entry');
       
       if (view === 'entry') {
-        // गुण भरा टॅबवर गेल्यावर चालू आठवड्याची चाचणी बाय-डिफॉल्ट सेट करणे
         const autoTest = getAutoActiveTest(currentEntryCategory);
         document.getElementById('entry-test-no').value = autoTest;
         loadStudentMarksForSelectedTest();
@@ -1083,8 +1092,15 @@
       const cont = document.getElementById('dash-test-pills');
       cont.innerHTML = '';
       for (let i = 1; i <= 10; i++) {
-        cont.innerHTML += `<button class="test-chip ${i === currentSelectedTest ? 'active' : ''}" onclick="selectTest(${i}, this)">चाचणी ${i}</button>`;
+        cont.innerHTML += `<button id="pill-test-${i}" class="test-chip ${i === currentSelectedTest ? 'active' : ''}" onclick="selectTest(${i}, this)">चाचणी ${i}</button>`;
       }
+      // फोटोप्रमाणे चालू असलेली चाचणी समोर स्क्रोल करणे
+      setTimeout(() => {
+        const activeBtn = document.getElementById(`pill-test-${currentSelectedTest}`);
+        if (activeBtn) {
+          activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+      }, 100);
     }
 
     function buildEntryTestOptions() {
@@ -1101,7 +1117,7 @@
       el.classList.add('active');
       currentSelectedCategory = cat;
       
-      // परीक्षा बदलल्यास चालू आठवड्याचा चाचणी क्रमांक आपोआप निवडणे
+      // परीक्षा बदलल्यास संबंधित चालू आठवड्याची चाचणी आपोआप निवडणे
       currentSelectedTest = getAutoActiveTest(cat);
       buildDashboardTestPills();
       listenLiveDashboardData();
@@ -1137,7 +1153,6 @@
       document.querySelectorAll('#screen-entry .category-chip').forEach(c => c.classList.remove('active'));
       document.getElementById(`entry-chip-${cat}`).classList.add('active');
       
-      // गुण भरा मध्येही आपोआप चालू चाचणी निवडणे
       const autoTest = getAutoActiveTest(cat);
       document.getElementById('entry-test-no').value = autoTest;
 
@@ -1695,7 +1710,7 @@
         const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
         const imgWidth = 277;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight);
+        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight, undefined, 'FAST');
         const stdName = document.getElementById('cert-std-name').innerText.trim() || 'Student';
         pdf.save(`Certificate_${stdName}.pdf`);
         showToast('प्रमाणपत्र PDF डाऊनलोड झाले!');
