@@ -33,7 +33,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mukta', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; min-height: 100vh; overflow-x: hidden; }
 
-    /* Top App Header */
+    /* Header */
     .app-header {
       background: white;
       position: sticky;
@@ -52,10 +52,8 @@
     .brand-text h1 { font-size: 1.15rem; font-weight: 800; color: var(--primary-dark); line-height: 1.2; }
     .brand-text p { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
-    /* Container */
     .app-container { max-width: 650px; margin: 0 auto; padding: 12px; }
 
-    /* Card */
     .app-card {
       background: var(--surface);
       border-radius: var(--radius);
@@ -76,7 +74,7 @@
       padding-bottom: 6px;
     }
 
-    /* Category Chips (English Digits) */
+    /* Chips */
     .chip-scroll {
       display: flex;
       gap: 8px;
@@ -108,7 +106,7 @@
       box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
     }
 
-    /* Test Pills Container */
+    /* Test Pills */
     .test-pill-wrap {
       display: flex;
       gap: 8px;
@@ -139,7 +137,7 @@
       box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
     }
 
-    /* Form Inputs */
+    /* Form Controls */
     .form-group { margin-bottom: 12px; display: flex; flex-direction: column; gap: 5px; }
     .form-group label { font-size: 0.88rem; font-weight: 700; color: #334155; }
     .form-control {
@@ -158,7 +156,6 @@
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-    /* Buttons */
     .app-btn {
       width: 100%;
       height: 46px;
@@ -191,11 +188,7 @@
       flex-direction: column;
       gap: 10px;
     }
-    .student-entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .student-entry-header { display: flex; justify-content: space-between; align-items: center; }
     .student-entry-info h4 { font-size: 1rem; font-weight: 700; }
     .student-entry-info span { font-size: 0.8rem; color: var(--text-muted); }
     
@@ -226,7 +219,6 @@
       gap: 8px;
     }
     
-    /* Attendance Toggle Buttons */
     .att-toggle-group {
       display: flex;
       border: 1.5px solid var(--border);
@@ -376,35 +368,38 @@
       padding: 16px;
       border-radius: 16px;
       width: 100%;
-      max-width: 820px;
-      max-height: 92vh;
+      max-width: 840px;
+      max-height: 94vh;
       overflow-y: auto;
     }
 
-    /* ================= आयव्हरी व सुस्पष्ट प्रमाणपत्र स्टाइल ================= */
+    /* ================= A4 लँडस्केप परिपूर्ण प्रमाणपत्र (840px x 594px = A4 Ratio) ================= */
     .cert-scroll-wrapper {
       width: 100%;
       overflow-x: auto;
-      padding: 6px 0;
+      padding: 8px 0;
       -webkit-overflow-scrolling: touch;
+      background: #e2e8f0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
     }
     .cert-container-box {
       position: relative;
-      width: 760px;
-      min-width: 760px;
-      height: 540px;
-      margin: 0 auto;
-      background: #fffef9; /* Real Ivory Tint */
-      border: 6px double #b45309;
+      width: 820px;
+      min-width: 820px;
+      height: 580px;
+      background: #fffdf7;
+      border: 8px double #b45309;
       outline: 2px solid #fde68a;
-      box-shadow: 0 10px 30px rgba(180, 83, 9, 0.15), inset 0 0 50px rgba(254, 243, 199, 0.4);
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 22px 32px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      padding: 24px 34px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       color: #1e293b;
+      margin: auto;
     }
     .cert-corner-flower {
       position: absolute;
@@ -413,10 +408,10 @@
       object-fit: contain;
       opacity: 0.85;
     }
-    .cert-corner-tl { top: 6px; left: 6px; }
-    .cert-corner-tr { top: 6px; right: 6px; transform: scaleX(-1); }
-    .cert-corner-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
-    .cert-corner-br { bottom: 6px; right: 6px; transform: scale(-1); }
+    .cert-corner-tl { top: 8px; left: 8px; }
+    .cert-corner-tr { top: 8px; right: 8px; transform: scaleX(-1); }
+    .cert-corner-bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+    .cert-corner-br { bottom: 8px; right: 8px; transform: scale(-1); }
 
     .cert-top-header {
       display: flex;
@@ -425,35 +420,34 @@
       border-bottom: 2px solid #fde68a;
       padding-bottom: 8px;
     }
-    .cert-zp-logo { width: 54px; height: 54px; object-fit: contain; border-radius: 6px; }
+    .cert-zp-logo { width: 56px; height: 56px; object-fit: contain; border-radius: 6px; }
     .cert-head-titles { text-align: center; flex: 1; padding: 0 10px; }
-    .cert-head-titles h2 { font-size: 1.35rem; font-weight: 800; color: #78350f; line-height: 1.2; }
+    .cert-head-titles h2 { font-size: 1.4rem; font-weight: 800; color: #78350f; line-height: 1.2; }
     .cert-head-titles p { font-size: 0.95rem; font-weight: 700; color: #0284c7; }
 
-    /* मुख्य मथळा - अक्षरे फुटू नयेत म्हणून शुद्ध Mukta 800 फॉन्ट */
-    .cert-title-badge-wrap { text-align: center; margin: 8px 0 4px 0; }
+    .cert-title-badge-wrap { text-align: center; margin: 10px 0 6px 0; }
     .cert-main-badge-title {
       font-family: 'Mukta', sans-serif !important;
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: #991b1b;
       letter-spacing: 0.5px;
       display: inline-block;
       border-bottom: 2.5px solid #b45309;
-      padding: 0 14px 2px 14px;
+      padding: 0 16px 2px 16px;
       white-space: nowrap;
     }
 
     .cert-content-body {
       text-align: center;
-      line-height: 1.85;
+      line-height: 1.9;
       font-size: 1.05rem;
       font-weight: 500;
       padding: 0 15px;
     }
     .cert-student-highlight {
       font-family: 'Mukta', sans-serif !important;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: #991b1b;
       display: inline-block;
@@ -503,6 +497,56 @@
       font-size: 0.88rem;
       font-weight: 700;
       color: #475569;
+    }
+
+    /* ================= A4 पोर्ट्रेट परिपूर्ण बॅनर (600px x 848px) ================= */
+    .banner-preview-box {
+      width: 600px;
+      min-width: 600px;
+      background: #fffdfa;
+      border: 4px solid #d97706;
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.15);
+      position: relative;
+      margin: 0 auto;
+    }
+    .banner-top-badge {
+      background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .banner-heading-main { font-size: 1.35rem; font-weight: 800; color: #0f172a; line-height: 1.3; margin-bottom: 2px; }
+    .banner-subheading { font-size: 0.9rem; font-weight: 600; color: #475569; margin-bottom: 10px; }
+    .banner-topper-grid { display: grid; gap: 5px; margin-bottom: 12px; text-align: left; }
+    .banner-row {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .banner-row:nth-child(1) { background: #fef3c7; border-color: #fde68a; font-weight: 800; }
+    .banner-row:nth-child(2) { background: #f1f5f9; border-color: #e2e8f0; font-weight: 700; }
+    .banner-row:nth-child(3) { background: #ffedd5; border-color: #fed7aa; font-weight: 700; }
+    .banner-footer-auth {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1.5px dashed #cbd5e1;
+      padding-top: 8px;
+      font-size: 0.82rem;
+      color: #0369a1;
+      font-weight: 800;
     }
 
     /* प्रगती पुस्तक */
@@ -558,56 +602,6 @@
       transition: height 0.3s;
     }
     .progress-col-label { font-size: 0.7rem; margin-top: 4px; color: #64748b; font-family: 'Poppins', sans-serif; }
-
-    /* बॅनर */
-    .banner-preview-box {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fffdfa;
-      border: 3px solid #d97706;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.15);
-      position: relative;
-    }
-    .banner-top-badge {
-      background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-    .banner-heading-main { font-size: 1.4rem; font-weight: 800; color: #0f172a; line-height: 1.3; margin-bottom: 4px; }
-    .banner-subheading { font-size: 0.92rem; font-weight: 600; color: #475569; margin-bottom: 12px; }
-    .banner-topper-grid { display: grid; gap: 6px; margin-bottom: 14px; text-align: left; }
-    .banner-row {
-      background: #ffffff;
-      border: 1px solid #fed7aa;
-      border-radius: 8px;
-      padding: 7px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    .banner-row:nth-child(1) { background: #fef3c7; border-color: #fde68a; font-weight: 800; }
-    .banner-row:nth-child(2) { background: #f1f5f9; border-color: #e2e8f0; font-weight: 700; }
-    .banner-row:nth-child(3) { background: #ffedd5; border-color: #fed7aa; font-weight: 700; }
-    .banner-footer-auth {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1.5px dashed #cbd5e1;
-      padding-top: 10px;
-      font-size: 0.82rem;
-      color: #0369a1;
-      font-weight: 800;
-    }
 
     .table-responsive { overflow-x: auto; margin-top: 10px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
@@ -743,7 +737,7 @@
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-user-plus"></i> २. नवीन विद्यार्थी वाढवा / जोडा</div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">
-          * सूचना: एकदा जोडलेले नाव खालील यादीत कायम दिसेल. नाव कमी करण्यासाठी किंवा दुरुस्त करण्यासाठी खालील यादीत पर्याय दिले आहेत.
+          * सूचना: एकदा जोडलेले नाव कायम उपलब्ध राहील. नाव कमी किंवा दुरुस्त करण्याचे पर्याय खाली दिले आहेत.
         </p>
         <div class="grid-2">
           <div class="form-group">
@@ -865,7 +859,7 @@
     </div>
   </div>
 
-  <!-- ३. Top 10 अभिनंदन बॅनर Modal -->
+  <!-- ३. Top 10 अभिनंदन बॅनर Modal (A4 Portrait Fit) -->
   <div class="modal" id="bannerModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -873,7 +867,7 @@
         <button onclick="closeModal('bannerModal')" style="border:none; background:none; font-size:1.4rem; cursor:pointer;">&times;</button>
       </div>
 
-      <div style="overflow-x:auto;">
+      <div style="overflow-x:auto; background:#e2e8f0; padding:10px; border-radius:10px;">
         <div class="banner-preview-box" id="banner-card-render">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <img src="logo.jpeg" alt="ZP Logo" style="width:48px; height:48px; object-fit:contain;" onerror="this.style.display='none'">
@@ -896,12 +890,12 @@
 
       <div class="grid-2" style="margin-top:14px;">
         <button class="app-btn btn-outline" onclick="closeModal('bannerModal')">बंद करा</button>
-        <button class="app-btn btn-gold" onclick="downloadBannerPDF()"><i class="fa-solid fa-download"></i> बॅनर PDF डाऊनलोड</button>
+        <button class="app-btn btn-gold" onclick="downloadBannerPDF()"><i class="fa-solid fa-download"></i> बॅनर PDF डाऊनलोड (A4 उभा)</button>
       </div>
     </div>
   </div>
 
-  <!-- ४. गुणवत्ता सन्मान प्रमाणपत्र Modal (Mukta 800 फॉन्टसह १००% सुस्पष्ट) -->
+  <!-- ४. गुणवत्ता सन्मान प्रमाणपत्र Modal (A4 Landscape Fit) -->
   <div class="modal" id="certModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -911,28 +905,28 @@
 
       <div class="cert-scroll-wrapper">
         <div class="cert-container-box" id="cert-card-render">
-          <!-- सजावटीची फुले व कोपरे -->
+          <!-- कोपरे -->
           <img src="flower1.jpg" class="cert-corner-flower cert-corner-tl" onerror="this.style.display='none'">
           <img src="flower1.jpg" class="cert-corner-flower cert-corner-tr" onerror="this.style.display='none'">
           <img src="flower2.jpg" class="cert-corner-flower cert-corner-bl" onerror="this.style.display='none'">
           <img src="flower2.jpg" class="cert-corner-flower cert-corner-br" onerror="this.style.display='none'">
 
-          <!-- प्रमाणपत्र हेडर (ZP Beed Logo + Titles) -->
+          <!-- हेडर -->
           <div class="cert-top-header">
             <img src="logo.jpeg" alt="जि. प. लोगो" class="cert-zp-logo" onerror="this.style.display='none'">
             <div class="cert-head-titles">
               <h2>जिल्हा परिषद बीड | पंचायत समिती माजलगाव</h2>
-              <p>शिक्षण विभाग - गुणवत्ता संवर्धन सराव परीक्षा २०२६-२७</p>
+              <p>शिक्षण विभाग - गुणवत्ता संवर्धन सराव परीक्षा 2026-27</p>
             </div>
             <i class="fa-solid fa-award" style="font-size: 2.8rem; color: #d97706;"></i>
           </div>
 
-          <!-- मुख्य मथळा - अक्षरे न फुटणारा Mukta फॉन्ट -->
+          <!-- मथळा -->
           <div class="cert-title-badge-wrap">
             <div class="cert-main-badge-title">गुणवत्ता सन्मान प्रमाणपत्र</div>
           </div>
 
-          <!-- मजकूर (सर्व अंक इंग्रजीमध्ये) -->
+          <!-- मजकूर -->
           <div class="cert-content-body">
             गौरवपूर्वक प्रमाणित करण्यात येते की, विद्यार्थी / विद्यार्थिनी
             <span class="cert-student-highlight" id="cert-std-name">---</span> 
@@ -946,7 +940,7 @@
             उल्लेखनीय गुणवत्ता सिद्ध करून खालीलप्रमाणे घवघवीत यश संपादन केले आहे.
           </div>
 
-          <!-- गुण व रँक बॅज (इंग्रजी अंक) -->
+          <!-- गुण व रँक -->
           <div class="cert-badges-row">
             <div class="cert-pill-gold" id="cert-marks">
               <i class="fa-solid fa-star" style="color:#d97706;"></i> प्राप्त गुण: 100 / 100
@@ -956,12 +950,12 @@
             </div>
           </div>
 
-          <!-- शुभेच्छा संदेश -->
+          <!-- शुभेच्छा -->
           <div class="cert-wishing-msg">
             ✨ आपण मिळवलेल्या या यशाबद्दल आपले हार्दिक अभिनंदन आणि उज्वल भविष्याकरिता मनःपूर्वक शुभेच्छा! ✨
           </div>
 
-          <!-- तळटीप व स्वाक्षरी -->
+          <!-- तळटीप -->
           <div class="cert-footer-auth">
             <div>
               <span id="cert-date-text">दिनांक: 12/10/2026</span><br>
@@ -981,7 +975,7 @@
 
       <div class="grid-2" style="margin-top:14px;">
         <button class="app-btn btn-outline" onclick="closeModal('certModal')">बंद करा</button>
-        <button class="app-btn btn-success" onclick="downloadCertificatePDF()"><i class="fa-solid fa-download"></i> प्रमाणपत्र PDF डाऊनलोड</button>
+        <button class="app-btn btn-success" onclick="downloadCertificatePDF()"><i class="fa-solid fa-download"></i> प्रमाणपत्र PDF डाऊनलोड (A4 आडवा)</button>
       </div>
     </div>
   </div>
@@ -1037,7 +1031,7 @@
     </div>
   </div>
 
-  <!-- ६. सर्वोत्कृष्ट शाळा गौरव Modal (सुस्पष्ट Mukta फॉन्टसह) -->
+  <!-- ६. सर्वोत्कृष्ट शाळा गौरव Modal -->
   <div class="modal" id="bestSchoolModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1130,9 +1124,8 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    /* ================= तारीख व शनिवार शिफ्टनुसार चालू चाचणी ================= */
     function getAutoActiveTest(category) {
-      const baseDate = new Date(2026, 9, 10); // 10 Oct 2026
+      const baseDate = new Date(2026, 9, 10);
       const today = new Date();
       
       const diffMs = today.getTime() - baseDate.getTime();
@@ -1158,7 +1151,6 @@
     let currentRawResults = {};
     let cachedPendingSchools = [];
 
-    /* ================= ३. इन्स्टंट लोड आणि बॅक बटन नियंत्रण ================= */
     function initPortal() {
       initClusterDropdown();
       buildClusterTabs();
@@ -1362,7 +1354,6 @@
       });
     }
 
-    /* ================= उपस्थित / गैरहजर टॉगल ================= */
     function setAttendance(id, status) {
       const inp = document.getElementById(`marks-input-${id}`);
       const btnP = document.getElementById(`att-p-${id}`);
@@ -1384,7 +1375,6 @@
       }
     }
 
-    /* ================= विद्यार्थी वाढवणे ================= */
     function addStudentToList() {
       const fname = document.getElementById('std-fname').value.trim();
       const mname = document.getElementById('std-mname').value.trim();
@@ -1416,7 +1406,6 @@
       });
     }
 
-    /* ================= विद्यार्थी कमी करणे ================= */
     function deleteStudent(id, name) {
       if (!confirm(`तुम्हाला "${name}" या विद्यार्थ्याचे नाव यादीतून नक्की कमी करायचे आहे का?`)) return;
 
@@ -1431,7 +1420,6 @@
       });
     }
 
-    /* ================= विद्यार्थी नाव दुरुस्त करणे ================= */
     function openEditStudentModal(id, name, gender) {
       document.getElementById('edit-std-id').value = id;
       document.getElementById('edit-std-name').value = name;
@@ -1726,7 +1714,7 @@
       });
     }
 
-    /* ================= Top 10 बॅनर ================= */
+    /* ================= Top 10 बॅनर (A4 Portrait - 100% Fit No Clipping) ================= */
     function openToppersBannerModal(type) {
       const listEl = document.getElementById('banner-toppers-list');
       listEl.innerHTML = '';
@@ -1800,17 +1788,39 @@
 
       html2canvas(card, { scale: 2, useCORS: true }).then(canvas => {
         const imgData = canvas.toDataURL('image/jpeg', 0.9);
-        const pdf = new jsPDF('portrait', 'mm', 'a4');
-        const imgWidth = 190;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight);
-        pdf.save('Abhinandan_Toppers_Banner.pdf');
+        // A4 Portrait: 210mm x 297mm
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const pageWidth = 210;
+        const pageHeight = 297;
+        const margin = 10;
+        const maxW = pageWidth - (margin * 2);
+        const maxH = pageHeight - (margin * 2);
+
+        const imgRatio = canvas.width / canvas.height;
+        let printW = maxW;
+        let printH = printW / imgRatio;
+
+        if (printH > maxH) {
+          printH = maxH;
+          printW = printH * imgRatio;
+        }
+
+        const posX = (pageWidth - printW) / 2;
+        const posY = (pageHeight - printH) / 2;
+
+        pdf.addImage(imgData, 'JPEG', posX, posY, printW, printH);
+        
+        const titleText = document.getElementById('banner-heading-text').innerText.replace(/\s+/g, '_');
+        pdf.save(`बॅनर_${titleText}_चाचणी${currentSelectedTest}.pdf`);
         showToast('बॅनर PDF डाऊनलोड झाले!');
       });
     }
 
-    /* ================= गुणवत्ता सन्मान प्रमाणपत्र (English Digits) ================= */
+    /* ================= गुणवत्ता सन्मान प्रमाणपत्र (A4 Landscape - No Clipping + Student Name) ================= */
+    let currentCertStudentName = 'विद्यार्थी';
+
     function openCertificateModal(name, school, udise, cluster, marks, rankText, gender) {
+      currentCertStudentName = name.trim();
       document.getElementById('cert-std-name').innerText = name;
       document.getElementById('cert-school-name').innerText = school;
       document.getElementById('cert-udise-code').innerText = String(udise).trim();
@@ -1847,14 +1857,32 @@
       const card = document.getElementById('cert-card-render');
       showToast('प्रमाणपत्र PDF तयार होत आहे...');
 
-      html2canvas(card, { scale: 1.8, useCORS: true, letterRendering: true }).then(canvas => {
-        const imgData = canvas.toDataURL('image/jpeg', 0.88);
+      html2canvas(card, { scale: 2, useCORS: true }).then(canvas => {
+        const imgData = canvas.toDataURL('image/jpeg', 0.9);
+        // A4 Landscape: 297mm x 210mm
         const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-        const imgWidth = 277;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight);
-        const stdName = document.getElementById('cert-std-name').innerText.trim() || 'Student';
-        pdf.save(`Certificate_${stdName}.pdf`);
+        const pageWidth = 297;
+        const pageHeight = 210;
+        const margin = 8;
+        const maxW = pageWidth - (margin * 2);
+        const maxH = pageHeight - (margin * 2);
+
+        const imgRatio = canvas.width / canvas.height;
+        let printW = maxW;
+        let printH = printW / imgRatio;
+
+        if (printH > maxH) {
+          printH = maxH;
+          printW = printH * imgRatio;
+        }
+
+        const posX = (pageWidth - printW) / 2;
+        const posY = (pageHeight - printH) / 2;
+
+        pdf.addImage(imgData, 'JPEG', posX, posY, printW, printH);
+        
+        const cleanName = currentCertStudentName.replace(/\s+/g, '_');
+        pdf.save(`प्रमाणपत्र_${cleanName}_चाचणी${currentSelectedTest}.pdf`);
         showToast('प्रमाणपत्र PDF डाऊनलोड झाले!');
       });
     }
@@ -1933,11 +1961,13 @@
         const imgWidth = 190;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         pdf.addImage(imgData, 'JPEG', 10, 15, imgWidth, imgHeight);
-        pdf.save(`ReportCard_${document.getElementById('rc-student-name').innerText}.pdf`);
+        
+        const stdName = document.getElementById('rc-student-name').innerText.trim().replace(/\s+/g, '_');
+        pdf.save(`प्रगती_पुस्तक_${stdName}.pdf`);
       });
     }
 
-    /* ================= सर्वोत्कृष्ट शाळा गौरव ================= */
+    /* ================= सर्वोत्कृष्ट शाळा गौरव (A4 Landscape Fit) ================= */
     function openBestSchoolModal() {
       if (!currentRawResults || Object.keys(currentRawResults).length === 0) {
         alert("अद्याप चाचणीचा निकाल उपलब्ध नाही.");
@@ -1976,11 +2006,30 @@
     function downloadBestSchoolPDF() {
       const { jsPDF } = window.jspdf;
       const card = document.getElementById('best-school-card-render');
-      html2canvas(card, { scale: 1.8, useCORS: true }).then(canvas => {
-        const imgData = canvas.toDataURL('image/jpeg', 0.85);
+      html2canvas(card, { scale: 2, useCORS: true }).then(canvas => {
+        const imgData = canvas.toDataURL('image/jpeg', 0.9);
         const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-        pdf.addImage(imgData, 'JPEG', 10, 15, 277, (canvas.height * 277) / canvas.width);
-        pdf.save('Best_School_Majalgaon.pdf');
+        const pageWidth = 297;
+        const pageHeight = 210;
+        const margin = 8;
+        const maxW = pageWidth - (margin * 2);
+        const maxH = pageHeight - (margin * 2);
+
+        const imgRatio = canvas.width / canvas.height;
+        let printW = maxW;
+        let printH = printW / imgRatio;
+
+        if (printH > maxH) {
+          printH = maxH;
+          printW = printH * imgRatio;
+        }
+
+        const posX = (pageWidth - printW) / 2;
+        const posY = (pageHeight - printH) / 2;
+
+        pdf.addImage(imgData, 'JPEG', posX, posY, printW, printH);
+        const scName = document.getElementById('bs-school-name').innerText.trim().replace(/\s+/g, '_');
+        pdf.save(`आदर्श_शाळा_सन्मान_${scName}.pdf`);
       });
     }
 
