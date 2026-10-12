@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>सराव चाचणी गुण संकलन व डॅशबोर्ड | पं. स. माजलगाव</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Yatra+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -76,7 +76,7 @@
       padding-bottom: 6px;
     }
 
-    /* Category Chips */
+    /* Category Chips (English Digits) */
     .chip-scroll {
       display: flex;
       gap: 8px;
@@ -381,7 +381,7 @@
       overflow-y: auto;
     }
 
-    /* आयव्हरी गुणवत्ता सन्मान प्रमाणपत्र */
+    /* ================= आयव्हरी व सुस्पष्ट प्रमाणपत्र स्टाइल ================= */
     .cert-scroll-wrapper {
       width: 100%;
       overflow-x: auto;
@@ -394,13 +394,13 @@
       min-width: 760px;
       height: 540px;
       margin: 0 auto;
-      background: #fffdf7;
-      border: 8px double #b45309;
+      background: #fffef9; /* Real Ivory Tint */
+      border: 6px double #b45309;
       outline: 2px solid #fde68a;
-      box-shadow: 0 10px 30px rgba(180, 83, 9, 0.18), inset 0 0 40px rgba(254, 243, 199, 0.5);
+      box-shadow: 0 10px 30px rgba(180, 83, 9, 0.15), inset 0 0 50px rgba(254, 243, 199, 0.4);
       border-radius: 12px;
       overflow: hidden;
-      padding: 24px 34px;
+      padding: 22px 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -411,36 +411,37 @@
       width: 55px;
       height: 55px;
       object-fit: contain;
-      opacity: 0.9;
+      opacity: 0.85;
     }
-    .cert-corner-tl { top: 8px; left: 8px; }
-    .cert-corner-tr { top: 8px; right: 8px; transform: scaleX(-1); }
-    .cert-corner-bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
-    .cert-corner-br { bottom: 8px; right: 8px; transform: scale(-1); }
+    .cert-corner-tl { top: 6px; left: 6px; }
+    .cert-corner-tr { top: 6px; right: 6px; transform: scaleX(-1); }
+    .cert-corner-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+    .cert-corner-br { bottom: 6px; right: 6px; transform: scale(-1); }
 
     .cert-top-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #fde68a;
-      padding-bottom: 10px;
-      position: relative;
+      padding-bottom: 8px;
     }
-    .cert-zp-logo { width: 56px; height: 56px; object-fit: contain; border-radius: 6px; }
+    .cert-zp-logo { width: 54px; height: 54px; object-fit: contain; border-radius: 6px; }
     .cert-head-titles { text-align: center; flex: 1; padding: 0 10px; }
-    .cert-head-titles h2 { font-size: 1.35rem; font-weight: 800; color: #78350f; line-height: 1.2; letter-spacing: 0.5px; }
+    .cert-head-titles h2 { font-size: 1.35rem; font-weight: 800; color: #78350f; line-height: 1.2; }
     .cert-head-titles p { font-size: 0.95rem; font-weight: 700; color: #0284c7; }
 
-    .cert-title-badge-wrap { text-align: center; margin: 10px 0 6px 0; }
+    /* मुख्य मथळा - अक्षरे फुटू नयेत म्हणून शुद्ध Mukta 800 फॉन्ट */
+    .cert-title-badge-wrap { text-align: center; margin: 8px 0 4px 0; }
     .cert-main-badge-title {
-      font-family: 'Yatra One', 'Mukta', serif;
-      font-size: 1.7rem;
+      font-family: 'Mukta', sans-serif !important;
+      font-size: 1.85rem;
       font-weight: 800;
       color: #991b1b;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       display: inline-block;
-      border-bottom: 2px solid #b45309;
-      padding-bottom: 2px;
+      border-bottom: 2.5px solid #b45309;
+      padding: 0 14px 2px 14px;
+      white-space: nowrap;
     }
 
     .cert-content-body {
@@ -451,11 +452,12 @@
       padding: 0 15px;
     }
     .cert-student-highlight {
-      font-family: 'Yatra One', cursive, sans-serif;
-      font-size: 1.55rem;
+      font-family: 'Mukta', sans-serif !important;
+      font-size: 1.45rem;
+      font-weight: 800;
       color: #991b1b;
       display: inline-block;
-      margin: 2px 6px;
+      margin: 0 6px;
       border-bottom: 1.5px dotted #991b1b;
     }
 
@@ -464,7 +466,7 @@
       justify-content: center;
       align-items: center;
       gap: 16px;
-      margin: 10px 0;
+      margin: 8px 0;
     }
     .cert-pill-gold {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
@@ -474,7 +476,7 @@
       font-size: 1.05rem;
       padding: 6px 22px;
       border-radius: 30px;
-      box-shadow: 0 3px 8px rgba(217, 119, 6, 0.25);
+      box-shadow: 0 3px 8px rgba(217, 119, 6, 0.2);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -489,7 +491,7 @@
       border: 1px dashed #86efac;
       border-radius: 8px;
       padding: 6px 14px;
-      margin: 4px 20px;
+      margin: 4px 15px;
     }
 
     .cert-footer-auth {
@@ -647,10 +649,10 @@
     <!-- ================= 1. डॅशबोर्ड स्क्रीन ================= -->
     <div id="screen-dashboard">
       <div class="chip-scroll">
-        <button class="category-chip active" onclick="selectDashboardCategory('navodaya', this)"><i class="fa-solid fa-school-flag"></i> नवोदय (५ वी)</button>
-        <button class="category-chip" onclick="selectDashboardCategory('4th', this)"><i class="fa-solid fa-book-open"></i> ४ थी शिष्यवृत्ती</button>
-        <button class="category-chip" onclick="selectDashboardCategory('7th', this)"><i class="fa-solid fa-award"></i> ७ वी शिष्यवृत्ती</button>
-        <button class="category-chip" onclick="selectDashboardCategory('nmms', this)"><i class="fa-solid fa-medal"></i> NMMS (८ वी)</button>
+        <button class="category-chip active" onclick="selectDashboardCategory('navodaya', this)"><i class="fa-solid fa-school-flag"></i> नवोदय (5 वी)</button>
+        <button class="category-chip" onclick="selectDashboardCategory('4th', this)"><i class="fa-solid fa-book-open"></i> 4 थी शिष्यवृत्ती</button>
+        <button class="category-chip" onclick="selectDashboardCategory('7th', this)"><i class="fa-solid fa-award"></i> 7 वी शिष्यवृत्ती</button>
+        <button class="category-chip" onclick="selectDashboardCategory('nmms', this)"><i class="fa-solid fa-medal"></i> NMMS (8 वी)</button>
       </div>
 
       <div class="app-card" style="padding: 10px 14px;">
@@ -702,10 +704,10 @@
     <!-- ================= 2. गुण नोंदणी स्क्रीन (शिक्षक पोर्टल) ================= -->
     <div id="screen-entry" style="display:none;">
       <div class="chip-scroll">
-        <button class="category-chip active" id="entry-chip-navodaya" onclick="selectEntryCategory('navodaya')">नवोदय (५ वी)</button>
-        <button class="category-chip" id="entry-chip-4th" onclick="selectEntryCategory('4th')">४ थी शिष्यवृत्ती</button>
-        <button class="category-chip" id="entry-chip-7th" onclick="selectEntryCategory('7th')">७ वी शिष्यवृत्ती</button>
-        <button class="category-chip" id="entry-chip-nmms" onclick="selectEntryCategory('nmms')">NMMS (८ वी)</button>
+        <button class="category-chip active" id="entry-chip-navodaya" onclick="selectEntryCategory('navodaya')">नवोदय (5 वी)</button>
+        <button class="category-chip" id="entry-chip-4th" onclick="selectEntryCategory('4th')">4 थी शिष्यवृत्ती</button>
+        <button class="category-chip" id="entry-chip-7th" onclick="selectEntryCategory('7th')">7 वी शिष्यवृत्ती</button>
+        <button class="category-chip" id="entry-chip-nmms" onclick="selectEntryCategory('nmms')">NMMS (8 वी)</button>
       </div>
 
       <!-- १. केंद्र व शाळा निवड -->
@@ -815,7 +817,7 @@
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <p style="font-size:0.82rem; color:#64748b; font-weight:700;" id="pending-subtitle">चालू चाचणी: एकूण ० शाळा प्रलंबित</p>
+        <p style="font-size:0.82rem; color:#64748b; font-weight:700;" id="pending-subtitle">चालू चाचणी: एकूण 0 शाळा प्रलंबित</p>
         <button class="app-btn btn-outline" style="width:auto; height:32px; font-size:0.75rem; padding:0 10px;" onclick="copyPendingWhatsAppMessage()">
           <i class="fa-solid fa-copy"></i> WhatsApp मेसेज कॉपी
         </button>
@@ -899,7 +901,7 @@
     </div>
   </div>
 
-  <!-- ४. अतिशय देखणे आयव्हरी गुणवत्ता सन्मान प्रमाणपत्र Modal -->
+  <!-- ४. गुणवत्ता सन्मान प्रमाणपत्र Modal (Mukta 800 फॉन्टसह १००% सुस्पष्ट) -->
   <div class="modal" id="certModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -909,7 +911,7 @@
 
       <div class="cert-scroll-wrapper">
         <div class="cert-container-box" id="cert-card-render">
-          <!-- सजावटीची फुले व शैक्षणिक घटक -->
+          <!-- सजावटीची फुले व कोपरे -->
           <img src="flower1.jpg" class="cert-corner-flower cert-corner-tl" onerror="this.style.display='none'">
           <img src="flower1.jpg" class="cert-corner-flower cert-corner-tr" onerror="this.style.display='none'">
           <img src="flower2.jpg" class="cert-corner-flower cert-corner-bl" onerror="this.style.display='none'">
@@ -920,17 +922,17 @@
             <img src="logo.jpeg" alt="जि. प. लोगो" class="cert-zp-logo" onerror="this.style.display='none'">
             <div class="cert-head-titles">
               <h2>जिल्हा परिषद बीड | पंचायत समिती माजलगाव</h2>
-              <p>शिक्षण विभाग - गुणवत्ता संवर्धन व सराव परीक्षा अभियान २०२६</p>
+              <p>शिक्षण विभाग - गुणवत्ता संवर्धन सराव परीक्षा २०२६-२७</p>
             </div>
             <i class="fa-solid fa-award" style="font-size: 2.8rem; color: #d97706;"></i>
           </div>
 
-          <!-- मुख्य मथळा -->
+          <!-- मुख्य मथळा - अक्षरे न फुटणारा Mukta फॉन्ट -->
           <div class="cert-title-badge-wrap">
             <div class="cert-main-badge-title">गुणवत्ता सन्मान प्रमाणपत्र</div>
           </div>
 
-          <!-- मजकूर -->
+          <!-- मजकूर (सर्व अंक इंग्रजीमध्ये) -->
           <div class="cert-content-body">
             गौरवपूर्वक प्रमाणित करण्यात येते की, विद्यार्थी / विद्यार्थिनी
             <span class="cert-student-highlight" id="cert-std-name">---</span> 
@@ -940,17 +942,17 @@
             केंद्र: <strong><span id="cert-cluster-name">---</span></strong> 
             <span id="cert-gender-pronoun">याने</span> पंचायत समिती माजलगाव अंतर्गत आयोजित 
             <strong><span id="cert-exam-title">---</span></strong> अंतर्गत 
-            चाचणी क्र. <strong id="cert-test-no" style="color:#b45309; font-size:1.15rem;">१</strong> मध्ये 
+            चाचणी क्र. <strong id="cert-test-no" style="color:#b45309; font-size:1.15rem;">1</strong> मध्ये 
             उल्लेखनीय गुणवत्ता सिद्ध करून खालीलप्रमाणे घवघवीत यश संपादन केले आहे.
           </div>
 
-          <!-- गुण व अचूक रँक बॅज -->
+          <!-- गुण व रँक बॅज (इंग्रजी अंक) -->
           <div class="cert-badges-row">
             <div class="cert-pill-gold" id="cert-marks">
-              <i class="fa-solid fa-star" style="color:#d97706;"></i> प्राप्त गुण: १०० / १००
+              <i class="fa-solid fa-star" style="color:#d97706;"></i> प्राप्त गुण: 100 / 100
             </div>
             <div class="cert-pill-gold" id="cert-rank-text">
-              <i class="fa-solid fa-trophy" style="color:#d97706;"></i> तालुक्यात क्रमांक #१
+              <i class="fa-solid fa-trophy" style="color:#d97706;"></i> तालुक्यात क्रमांक #1
             </div>
           </div>
 
@@ -959,10 +961,10 @@
             ✨ आपण मिळवलेल्या या यशाबद्दल आपले हार्दिक अभिनंदन आणि उज्वल भविष्याकरिता मनःपूर्वक शुभेच्छा! ✨
           </div>
 
-          <!-- तळटीप व अधिकृत स्वाक्षरी रकाना -->
+          <!-- तळटीप व स्वाक्षरी -->
           <div class="cert-footer-auth">
             <div>
-              <span id="cert-date-text">दिनांक: १२/१०/२०२६</span><br>
+              <span id="cert-date-text">दिनांक: 12/10/2026</span><br>
               <span style="font-size:0.75rem; color:#64748b;">स्थळ: माजलगाव</span>
             </div>
             <div style="text-align:center;">
@@ -995,7 +997,7 @@
       <div class="report-card-container" id="report-card-render">
         <div class="report-card-header">
           <h2>पंचायत समिती माजलगाव - शिक्षण विभाग</h2>
-          <p style="font-weight:600; font-size:0.95rem; color:#334155;">सराव चाचणी संकलित प्रगती पुस्तक (चाचणी १ ते १०)</p>
+          <p style="font-weight:600; font-size:0.95rem; color:#334155;">सराव चाचणी संकलित प्रगती पुस्तक (चाचणी 1 ते 10)</p>
         </div>
 
         <div class="report-meta-grid">
@@ -1035,7 +1037,7 @@
     </div>
   </div>
 
-  <!-- ६. सर्वोत्कृष्ट शाळा गौरव Modal -->
+  <!-- ६. सर्वोत्कृष्ट शाळा गौरव Modal (सुस्पष्ट Mukta फॉन्टसह) -->
   <div class="modal" id="bestSchoolModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1062,11 +1064,11 @@
             सस्नेह सन्मानपूर्वक प्रमाणित करण्यात येते की,<br>
             शाळा: <span class="cert-student-highlight" id="bs-school-name">जि.प.प्रा.शाळा सावरगाव</span><br>
             केंद्र: <strong><span id="bs-cluster-name">सावरगाव</span></strong> यांनी पंचायत समिती माजलगाव अंतर्गत आयोजित सराव परीक्षांमध्ये 
-            विद्यार्थ्यांचा १००% सहभाग व सरासरी <strong><span id="bs-avg-score">88.5%</span></strong> गुणांसह तालुक्यात सर्वोत्कृष्ट गुणवत्ता सिद्ध केली आहे.
+            विद्यार्थ्यांचा 100% सहभाग व सरासरी <strong><span id="bs-avg-score">88.5%</span></strong> गुणांसह तालुक्यात सर्वोत्कृष्ट गुणवत्ता सिद्ध केली आहे.
           </div>
 
           <div class="cert-badges-row">
-            <div class="cert-pill-gold"><i class="fa-solid fa-medal"></i> तालुका आदर्श गुणवत्ता शाळा २०२६-२७</div>
+            <div class="cert-pill-gold"><i class="fa-solid fa-medal"></i> तालुका आदर्श गुणवत्ता शाळा 2026-27</div>
           </div>
 
           <div class="cert-wishing-msg">
@@ -1074,7 +1076,7 @@
           </div>
 
           <div class="cert-footer-auth">
-            <div><span id="bs-date-text">दिनांक: १२/१०/२०२६</span></div>
+            <div><span id="bs-date-text">दिनांक: 12/10/2026</span></div>
             <div><span>शिक्षण विभाग, पंचायत समिती माजलगाव</span></div>
           </div>
         </div>
@@ -1169,7 +1171,6 @@
       } catch(e) {}
     }
 
-    // खात्रीशीर एक्झिक्युशन (DOMContentLoaded ची वाट न पाहता)
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initPortal);
     } else {
@@ -1177,7 +1178,6 @@
     }
 
     window.addEventListener('popstate', function(event) {
-      // १. मोडल उघडे असल्यास बंद करा
       const openModal = document.querySelector('.modal[style*="display: flex"]');
       if (openModal) {
         openModal.style.display = 'none';
@@ -1185,7 +1185,6 @@
         return;
       }
 
-      // २. 'गुण भरा' पानावर असल्यास डॅशबोर्डवर या
       const entryView = document.getElementById('screen-entry');
       if (entryView && entryView.style.display !== 'none') {
         switchTab('dashboard');
@@ -1193,7 +1192,6 @@
         return;
       }
 
-      // ३. होम स्क्रीनवर असल्यास खात्री विचारा
       const confirmExit = confirm("आपणास हे ॲप बंद करायचे आहे का?");
       if (confirmExit) {
         history.back();
@@ -1704,10 +1702,10 @@
       }
 
       const examNames = {
-        'navodaya': 'नवोदय प्रवेश पात्रता परीक्षा (इ. ५ वी)',
-        '4th': 'इयत्ता चौथी शिष्यवृत्ती सराव परीक्षा',
-        '7th': 'इयत्ता सातवी शिष्यवृत्ती सराव परीक्षा',
-        'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा (इ. ८ वी)'
+        'navodaya': 'नवोदय प्रवेश पात्रता परीक्षा (5 वी)',
+        '4th': 'इयत्ता 4 थी शिष्यवृत्ती सराव परीक्षा',
+        '7th': 'इयत्ता 7 वी शिष्यवृत्ती सराव परीक्षा',
+        'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा (8 वी)'
       };
 
       let msg = `*📢 शिक्षण विभाग, पंचायत समिती माजलगाव*\n`;
@@ -1734,10 +1732,10 @@
       listEl.innerHTML = '';
 
       const examNames = {
-        'navodaya': 'नवोदय प्रवेश पात्रता परीक्षा (इ. ५ वी)',
-        '4th': 'इयत्ता चौथी शिष्यवृत्ती सराव परीक्षा',
-        '7th': 'इयत्ता सातवी शिष्यवृत्ती सराव परीक्षा',
-        'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा (इ. ८ वी)'
+        'navodaya': 'नवोदय प्रवेश पात्रता परीक्षा (5 वी)',
+        '4th': 'इयत्ता 4 थी शिष्यवृत्ती सराव परीक्षा',
+        '7th': 'इयत्ता 7 वी शिष्यवृत्ती सराव परीक्षा',
+        'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा (8 वी)'
       };
 
       let title = "";
@@ -1811,21 +1809,21 @@
       });
     }
 
-    /* ================= गुणवत्ता सन्मान प्रमाणपत्र ================= */
+    /* ================= गुणवत्ता सन्मान प्रमाणपत्र (English Digits) ================= */
     function openCertificateModal(name, school, udise, cluster, marks, rankText, gender) {
       document.getElementById('cert-std-name').innerText = name;
       document.getElementById('cert-school-name').innerText = school;
       document.getElementById('cert-udise-code').innerText = String(udise).trim();
       document.getElementById('cert-cluster-name').innerText = cluster;
 
-      const classMap = { 'navodaya': 'इयत्ता ५ वी (नवोदय)', '4th': 'इयत्ता ४ थी', '7th': 'इयत्ता ७ वी', 'nmms': 'इयत्ता ८ वी' };
-      document.getElementById('cert-std-class').innerText = classMap[currentSelectedCategory] || 'इयत्ता ५ वी';
+      const classMap = { 'navodaya': 'इयत्ता 5 वी (नवोदय)', '4th': 'इयत्ता 4 थी', '7th': 'इयत्ता 7 वी', 'nmms': 'इयत्ता 8 वी' };
+      document.getElementById('cert-std-class').innerText = classMap[currentSelectedCategory] || 'इयत्ता 5 वी';
 
       const isGirl = (gender === "मुलगी" || gender === "girl" || gender === "Female");
       document.getElementById('cert-gender-pronoun').innerText = isGirl ? "या विद्यार्थिनीने" : "या विद्यार्थ्याने";
 
       document.getElementById('cert-test-no').innerText = currentSelectedTest;
-      document.getElementById('cert-marks').innerHTML = `<i class="fa-solid fa-star" style="color:#d97706;"></i> प्राप्त गुण: ${marks} / १००`;
+      document.getElementById('cert-marks').innerHTML = `<i class="fa-solid fa-star" style="color:#d97706;"></i> प्राप्त गुण: ${marks} / 100`;
       document.getElementById('cert-rank-text').innerHTML = `<i class="fa-solid fa-trophy" style="color:#d97706;"></i> ${rankText}`;
 
       const today = new Date();
@@ -1836,8 +1834,8 @@
 
       const examNames = {
         'navodaya': 'नवोदय विद्यालय प्रवेश पात्रता सराव परीक्षा',
-        '4th': 'इयत्ता चौथी शिष्यवृत्ती सराव परीक्षा',
-        '7th': 'इयत्ता सातवी शिष्यवृत्ती सराव परीक्षा',
+        '4th': 'इयत्ता 4 थी शिष्यवृत्ती सराव परीक्षा',
+        '7th': 'इयत्ता 7 वी शिष्यवृत्ती सराव परीक्षा',
         'nmms': 'NMMS शिष्यवृत्ती सराव परीक्षा'
       };
       document.getElementById('cert-exam-title').innerText = examNames[currentSelectedCategory] || 'सराव परीक्षा';
@@ -1849,7 +1847,7 @@
       const card = document.getElementById('cert-card-render');
       showToast('प्रमाणपत्र PDF तयार होत आहे...');
 
-      html2canvas(card, { scale: 2, useCORS: true, letterRendering: true }).then(canvas => {
+      html2canvas(card, { scale: 1.8, useCORS: true, letterRendering: true }).then(canvas => {
         const imgData = canvas.toDataURL('image/jpeg', 0.88);
         const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
         const imgWidth = 277;
@@ -1869,7 +1867,7 @@
       document.getElementById('rc-school-name').innerText = selectedSchoolObj.n;
       document.getElementById('rc-cluster-name').innerText = selectedSchoolObj.k;
       document.getElementById('rc-udise').innerText = selectedSchoolObj.c;
-      const classMap = { 'navodaya': 'इयत्ता ५ वी', '4th': 'इयत्ता ४ थी', '7th': 'इयत्ता ७ वी', 'nmms': 'इयत्ता ८ वी' };
+      const classMap = { 'navodaya': 'इयत्ता 5 वी', '4th': 'इयत्ता 4 थी', '7th': 'इयत्ता 7 वी', 'nmms': 'इयत्ता 8 वी' };
       document.getElementById('rc-class-name').innerText = classMap[currentEntryCategory] || '-';
 
       const key = getSchoolDbKey();
@@ -1971,7 +1969,7 @@
       }
 
       const today = new Date();
-      document.getElementById('bs-date-text').innerText = `Date: ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+      document.getElementById('bs-date-text').innerText = `दिनांक: ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
       document.getElementById('bestSchoolModal').style.display = 'flex';
     }
 
