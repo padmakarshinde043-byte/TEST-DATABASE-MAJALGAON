@@ -42,7 +42,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mukta', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; min-height: 100vh; overflow-x: hidden; }
 
-    /* Header */
+    /* Top App Header */
     .app-header {
       background: white;
       position: sticky;
@@ -135,7 +135,7 @@
       box-shadow: 0 3px 10px rgba(5, 150, 105, 0.35);
     }
 
-    /* Test Pills - फक्त चाचणी क्रमांक, गुण नाही */
+    /* Test Pills */
     .test-pill-wrap {
       display: flex;
       gap: 8px;
@@ -707,7 +707,7 @@
         <div class="test-pill-wrap" id="dash-test-pills"></div>
       </div>
 
-      <!-- Stats Grid (सर्वोच्च गुण मध्ये 100 पैकी किंवा 50 पैकी) -->
+      <!-- Stats Grid (सर्वोच्च गुण नवोदयला 100 पैकी तर इतरांना 50 पैकी) -->
       <div class="stats-grid">
         <div class="stat-box stat-box-students">
           <p>प्रविष्ट विद्यार्थी</p>
@@ -771,7 +771,7 @@
         <button class="category-chip cat-nmms" id="entry-chip-nmms" onclick="selectEntryCategory('nmms')">NMMS (8 वी)</button>
       </div>
 
-      <!-- १. केंद्र व शाळा निवड (चाचणी पर्याय पूर्णपणे काढला आहे) -->
+      <!-- १. केंद्र व शाळा निवड -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-school" style="color:var(--sky);"></i> १. केंद्र व शाळा निवडा</div>
 
@@ -827,13 +827,12 @@
         <button class="app-btn btn-success" onclick="addStudentToList()"><i class="fa-solid fa-plus"></i> यादीत नवीन विद्यार्थी जोडा</button>
       </div>
 
-      <!-- ३. गुण भरा व उपस्थित/गैरहजर नोंदवा (येथे चाचणी क्रमांक व एकूण गुण ५०/१०० दाखवले आहेत) -->
+      <!-- ३. गुण भरा व उपस्थित/गैरहजर नोंदवा (५० किंवा १०० पैकी बॅज) -->
       <div class="app-card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
           <div class="app-card-title" style="margin:0; border:none;"><i class="fa-solid fa-pen-nib" style="color:var(--kesari);"></i> ३. विद्यार्थ्यांची हजेरी व गुण नोंदणी</div>
         </div>
 
-        <!-- चाचणी निवड व एकूण गुण -->
         <div class="form-group" style="background:#f1f5f9; padding:10px 12px; border-radius:10px; margin-bottom:14px; border:1.5px solid #cbd5e1;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <label style="color:#0f172a; font-weight:800; margin:0;"><i class="fa-solid fa-list-ol"></i> चाचणी क्रमांक निवडा:</label>
@@ -864,6 +863,7 @@
         </p>
       </div>
 
+      <!-- निकाल लॉक करा व एकूण गुण सेट करा विभाग -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-lock" style="color:var(--accent-green);"></i> अधिकृत निकाल जाहीर व लॉक करा</div>
         <div class="form-group">
@@ -879,9 +879,14 @@
           <label>चाचणी क्रमांक निवडा:</label>
           <select class="form-control" id="admin-lock-test" onchange="updateAdminMaxMarksInfo()"></select>
         </div>
-        <div style="margin-bottom:12px; font-weight:700; font-size:0.85rem; color:#0369a1;" id="admin-max-marks-info">
-          * या चाचणीचे सर्वोच्च गुण: 100 पैकी धरले जातील.
+
+        <!-- नवीन: एकूण गुण स्वतः बदलण्यासाठी/सेट करण्यासाठी इनपुट पर्याय -->
+        <div class="form-group" style="background:#fef3c7; border:1.5px solid #fde68a; padding:10px 12px; border-radius:10px;">
+          <label style="color:#78350f; font-weight:800;"><i class="fa-solid fa-sliders"></i> या चाचणीचे एकूण गुण सेट करा (Max Marks):</label>
+          <input type="number" class="form-control" id="admin-custom-max-marks" value="100" min="1" max="500" style="font-weight:800; font-size:1.1rem; color:#92400e;">
+          <small style="color:#92400e; font-weight:600; font-size:0.75rem;">* नवोदयसाठी सामान्यतः 100 व शिष्यवृत्ती/NMMS साठी 50 गुण असतात. गरज असल्यास बदल करा.</small>
         </div>
+
         <button class="app-btn btn-gold" onclick="declareAndLockResults()">
           <i class="fa-solid fa-shield-halved"></i> 📢 निकाल जाहीर व लॉक करा
         </button>
@@ -914,7 +919,7 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Navigation (२ च टॅब्स) -->
   <nav class="bottom-nav">
     <button class="nav-item nav-item-dash active" id="nav-btn-dash" onclick="switchTab('dashboard')">
       <i class="fa-solid fa-chart-line"></i>
@@ -1182,16 +1187,12 @@
       return calculatedTest;
     }
 
-    // चाचणी व परीक्षेनुसार एकूण गुण (50 किंवा 100)
+    /* नवोदय कायमस्वरूपी १०० पैकी तर इतर परीक्षा कायमस्वरूपी ५० पैकी */
     function getMaxMarksForTest(category, testNo) {
       if (category === 'navodaya') {
         return 100;
       }
-      // ४ थी, ७ वी व NMMS च्या पहिल्या चाचण्या 50 गुणांच्या असतात
-      if (testNo <= 7) {
-        return 50;
-      }
-      return 100;
+      return 50;
     }
 
     let currentSelectedCategory = 'navodaya';
@@ -1250,7 +1251,7 @@
       });
     });
 
-    /* ================= सानुकूल 'महत्त्वाची सूचना' डायलॉग ================= */
+    /* सानुकूल 'महत्त्वाची सूचना' डायलॉग */
     function showCustomAlert(message) {
       document.getElementById('customNoticeBody').innerText = message;
       document.getElementById('customNoticeActions').innerHTML = `
@@ -1301,7 +1302,6 @@
       window.scrollTo(0, 0);
     }
 
-    /* हेडरवर ३ वेळा क्लिक केल्यास गुप्त ॲडमिन कक्ष (PIN: 2026) */
     function handleSecretAdminTrigger() {
       adminClickCount++;
       clearTimeout(adminClickTimer);
@@ -1326,7 +1326,6 @@
       return low <= target && high >= target;
     }
 
-    /* चाचणी बटनांवर एकूण गुण न दाखवता फक्त चाचणी क्रमांक */
     function buildDashboardTestPills() {
       const cont = document.getElementById('dash-test-pills');
       if (!cont) return;
@@ -1708,11 +1707,10 @@
 
         document.getElementById('stat-total-students').innerText = allStudents.length;
         
-        // सरासरी टक्केवारी अचूक काढणे (५० किंवा १०० पैकी गुणानुसार)
         const avgPercentage = (presentCount > 0 && maxM > 0) ? ((totalScore / (presentCount * maxM)) * 100).toFixed(1) + '%' : '0%';
         document.getElementById('stat-avg-score').innerText = avgPercentage;
 
-        // सर्वोच्च गुण इंग्रजी अंकात आणि चाचणीनुसार ५० किंवा १०० पैकी
+        // सर्वोच्च गुण (नवोदय 100 पैकी तर इतर 50 पैकी)
         document.getElementById('stat-max-score').innerText = `${maxScore}/${maxM}`;
         document.getElementById('stat-active-clusters').innerText = `${clusterSet.size}/${CLUSTER_LIST.length}`;
 
@@ -1734,7 +1732,9 @@
 
       const declaredCat = DECLARED_DATA_STORE[currentSelectedCategory];
       const testKey = `test_${currentSelectedTest}`;
-      const maxM = getMaxMarksForTest(currentSelectedCategory, currentSelectedTest);
+      const maxM = (declaredCat && declaredCat[testKey] && declaredCat[testKey].maxMarks) 
+        ? declaredCat[testKey].maxMarks 
+        : getMaxMarksForTest(currentSelectedCategory, currentSelectedTest);
 
       if (!declaredCat || !declaredCat[testKey]) {
         cont.innerHTML = `
@@ -1851,7 +1851,7 @@
       const listEl = document.getElementById('banner-toppers-list');
       listEl.innerHTML = '';
 
-      const maxM = getMaxMarksForTest(currentSelectedCategory, testNum);
+      const maxM = (testData.maxMarks) ? testData.maxMarks : getMaxMarksForTest(currentSelectedCategory, testNum);
 
       const examNames = {
         'navodaya': 'नवोदय प्रवेश पात्रता परीक्षा (5 वी)',
@@ -1900,7 +1900,7 @@
       document.getElementById('bestSchoolModal').style.display = 'flex';
     }
 
-    /* ================= ॲडमिन पॅनल ऑपरेशन्स ================= */
+    /* ================= ॲडमिन पॅनल ऑपरेशन्स (Set Max Marks Feature) ================= */
     function initAdminPanelOptions() {
       const admTest = document.getElementById('admin-lock-test');
       const admPendTest = document.getElementById('admin-pending-test');
@@ -1929,18 +1929,24 @@
       const cat = document.getElementById('admin-lock-category').value;
       const testNo = parseInt(document.getElementById('admin-lock-test').value, 10) || 1;
       const maxM = getMaxMarksForTest(cat, testNo);
-      const info = document.getElementById('admin-max-marks-info');
-      if (info) {
-        info.innerText = `* या चाचणीचे सर्वोच्च गुण: ${maxM} पैकी धरले जातील.`;
+      const customInput = document.getElementById('admin-custom-max-marks');
+      if (customInput) {
+        customInput.value = maxM;
       }
     }
 
     function declareAndLockResults() {
       const cat = document.getElementById('admin-lock-category').value;
       const testNo = document.getElementById('admin-lock-test').value;
-      const maxM = getMaxMarksForTest(cat, parseInt(testNo, 10));
+      
+      // ॲडमिनने सेट केलेले गुण घेणे
+      const customMaxInput = document.getElementById('admin-custom-max-marks');
+      let maxM = parseInt(customMaxInput.value, 10);
+      if (isNaN(maxM) || maxM <= 0) {
+        maxM = getMaxMarksForTest(cat, parseInt(testNo, 10));
+      }
 
-      showCustomConfirm(`तुम्हाला खात्री आहे का? चाचणी क्र. ${testNo} चे निकाल लॉक केल्यास तो अधिकृत निकाल म्हणून जाहीर होईल!`, () => {
+      showCustomConfirm(`तुम्हाला खात्री आहे का? चाचणी क्र. ${testNo} चे निकाल ${maxM} पैकी लॉक केल्यास तो अधिकृत निकाल म्हणून जाहीर होईल!`, () => {
         showToast('गुणांची गणना व लॉकिंग सुरू आहे...');
 
         db.ref(`majalgaon_results/${cat}/test_${testNo}`).once('value', (snap) => {
@@ -2004,7 +2010,7 @@
           };
 
           db.ref(`majalgaon_declared_toppers/${cat}/test_${testNo}`).set(payload).then(() => {
-            showCustomAlert(`अभिनंदन! चाचणी क्र. ${testNo} चे निकाल यशस्वीरित्या जाहीर व लॉक झाले आहेत!`);
+            showCustomAlert(`अभिनंदन! चाचणी क्र. ${testNo} चे निकाल (${maxM} पैकी) यशस्वीरित्या जाहीर व लॉक झाले आहेत!`);
             showToast('निकाल यशस्वीरित्या जाहीर झाले!');
           }).catch(err => {
             showCustomAlert('लॉकिंग त्रुटी: ' + err.message);
