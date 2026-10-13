@@ -207,7 +207,7 @@
     .btn-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
     .btn-danger { background: var(--danger); color: white; }
 
-    /* ================= भाग २ मधील नोंदणीकृत विद्यार्थी व्यवस्थापन यादी ================= */
+    /* Registered Students Manager */
     .registered-students-container {
       margin-top: 14px;
       border-top: 1.5px dashed var(--border);
@@ -227,7 +227,7 @@
     .reg-std-item span { font-size: 0.78rem; color: var(--text-muted); }
     .reg-std-actions { display: flex; gap: 6px; }
 
-    /* ================= भाग ३ मधील गुण नोंदणी कार्ड (सुटसुटीत, चिन्हे काढून टाकली) ================= */
+    /* Student Entry Cards */
     .student-entry-card {
       background: #ffffff;
       border: 1.5px solid #e2e8f0;
@@ -239,11 +239,7 @@
       gap: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
-    .student-entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .student-entry-header { display: flex; justify-content: space-between; align-items: center; }
     .student-entry-info h4 { font-size: 1.05rem; font-weight: 800; color: #0f172a; }
     .student-entry-info span { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
@@ -275,7 +271,6 @@
     .att-btn.present.active { background: #dcfce7; color: #15803d; }
     .att-btn.absent.active { background: #fee2e2; color: #b91c1c; }
 
-    /* सुटसुटीत रिकामा गुण इनपुट डबा */
     .marks-input {
       width: 90px;
       height: 40px;
@@ -726,7 +721,7 @@
         <div class="test-pill-wrap" id="dash-test-pills"></div>
       </div>
 
-      <!-- Stats Grid (सर्वोच्च गुण नवोदयला 100 पैकी तर इतरांना 50 पैकी) -->
+      <!-- Stats Grid -->
       <div class="stats-grid">
         <div class="stat-box stat-box-students">
           <p>प्रविष्ट विद्यार्थी</p>
@@ -790,7 +785,7 @@
         <button class="category-chip cat-nmms" id="entry-chip-nmms" onclick="selectEntryCategory('nmms')">NMMS (8 वी)</button>
       </div>
 
-      <!-- १. केंद्र व शाळा निवड (चाचणी पर्याय येथून काढला आहे) -->
+      <!-- १. केंद्र व शाळा निवड (चाचणी पर्याय पूर्णपणे काढला आहे) -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-school" style="color:var(--sky);"></i> १. केंद्र व शाळा निवडा</div>
 
@@ -852,21 +847,24 @@
         </div>
       </div>
 
-      <!-- ३. गुण भरा व उपस्थित/गैरहजर नोंदवा (सुटसुटीत डबा, कोणतीही चिन्हे नाहीत) -->
+      <!-- ३. गुण भरा व उपस्थित/गैरहजर नोंदवा (केवळ सध्या चालू असलेली चाचणीच ॲक्टिव्ह) -->
       <div class="app-card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
           <div class="app-card-title" style="margin:0; border:none;"><i class="fa-solid fa-pen-nib" style="color:var(--kesari);"></i> ३. विद्यार्थ्यांची हजेरी व गुण नोंदणी</div>
         </div>
 
-        <!-- चाचणी निवड व एकूण गुण सूचना एकदाच ठळक -->
-        <div class="form-group" style="background:#f1f5f9; padding:12px; border-radius:10px; margin-bottom:14px; border:1.5px solid #cbd5e1;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <label style="color:#0f172a; font-weight:800; margin:0;"><i class="fa-solid fa-list-ol"></i> चाचणी क्रमांक निवडा:</label>
-            <span id="entry-total-marks-badge" style="background:#0284c7; color:white; padding:4px 12px; border-radius:14px; font-size:0.82rem; font-weight:800;">
+        <!-- चालू चाचणी प्रदर्शन (फक्त चालू चाचणी, बदलता येणार नाही) -->
+        <div class="form-group" style="background:#f0fdf4; padding:12px; border-radius:10px; margin-bottom:14px; border:1.5px solid #86efac;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span style="font-size:0.8rem; font-weight:700; color:#166534;"><i class="fa-solid fa-lock"></i> चालू चाचणी क्रमांक:</span>
+              <h4 id="entry-active-test-display" style="font-size:1.15rem; font-weight:800; color:#14532d; margin-top:2px;">चाचणी क्रमांक 6</h4>
+            </div>
+            <span id="entry-total-marks-badge" style="background:#0284c7; color:white; padding:5px 14px; border-radius:14px; font-size:0.85rem; font-weight:800;">
               100 पैकी गुण नोंदवा
             </span>
           </div>
-          <select class="form-control" id="entry-test-no" onchange="loadStudentMarksForSelectedTest()"></select>
+          <input type="hidden" id="entry-test-no" value="6">
         </div>
         
         <div id="student-list-container">
@@ -887,10 +885,38 @@
           <button class="app-btn btn-outline" style="width:auto; height:30px; font-size:0.75rem; padding:0 8px;" onclick="switchTab('dashboard')">बंद करा</button>
         </div>
         <p style="font-size:0.82rem; color:#475569;">
-          येथून अधिकृत निकाल जाहीर व लॉक केल्यावरच तो शाळांना दिसेल व प्रमाणपत्रे तयार होतील.
+          येथून आपण चाचणीचे एकूण गुण सेट करू शकता, अधिकृत निकाल जाहीर करू शकता आणि सहभागी शाळांचा सविस्तर आढावा घेऊ शकता.
         </p>
       </div>
 
+      <!-- १. प्रत्येक परीक्षेच्या चाचणीचे मॅक्सिमम गुण (Max Marks) सेट करण्याची सुविधा -->
+      <div class="app-card" style="border-left: 5px solid var(--gold);">
+        <div class="app-card-title"><i class="fa-solid fa-sliders" style="color:var(--gold);"></i> चाचणीनिहाय एकूण गुण (Max Marks) सेट करा</div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>परीक्षेचा प्रकार:</label>
+            <select class="form-control" id="admin-mm-category" onchange="loadCurrentCustomMaxMarks()">
+              <option value="navodaya">नवोदय (5 वी)</option>
+              <option value="4th">4 थी शिष्यवृत्ती</option>
+              <option value="7th">7 वी शिष्यवृत्ती</option>
+              <option value="nmms">NMMS (8 वी)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>चाचणी क्रमांक:</label>
+            <select class="form-control" id="admin-mm-test" onchange="loadCurrentCustomMaxMarks()"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>एकूण गुण (Max Marks):</label>
+          <input type="number" class="form-control" id="admin-mm-input" placeholder="उदा. 50 किंवा 100" style="font-size:1.1rem; font-weight:800;">
+        </div>
+        <button class="app-btn btn-gold" onclick="saveCustomMaxMarks()">
+          <i class="fa-solid fa-floppy-disk"></i> या चाचणीचे एकूण गुण सेट करा
+        </button>
+      </div>
+
+      <!-- २. निकाल लॉक करा विभाग -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-lock" style="color:var(--accent-green);"></i> अधिकृत निकाल जाहीर व लॉक करा</div>
         <div class="form-group">
@@ -909,11 +935,24 @@
         <div style="margin-bottom:12px; font-weight:700; font-size:0.85rem; color:#0369a1;" id="admin-max-marks-info">
           * या चाचणीचे सर्वोच्च गुण: 100 पैकी धरले जातील.
         </div>
-        <button class="app-btn btn-gold" onclick="declareAndLockResults()">
+        <button class="app-btn btn-primary" onclick="declareAndLockResults()">
           <i class="fa-solid fa-shield-halved"></i> 📢 निकाल जाहीर व लॉक करा
         </button>
       </div>
 
+      <!-- ३. ॲडमिनसाठी सहभागी केंद्र, शाळा व भरलेली विद्यार्थी संख्या ट्रॅकर -->
+      <div class="app-card" style="border-left: 5px solid var(--sky);">
+        <div class="app-card-title"><i class="fa-solid fa-chart-pie" style="color:var(--sky);"></i> सहभागी केंद्र व शाळा तपशील (भरलेली संख्या)</div>
+        <div class="grid-2" style="margin-bottom:10px;">
+          <select class="form-control" id="admin-part-category" onchange="renderAdminParticipationDetails()"></select>
+          <select class="form-control" id="admin-part-test" onchange="renderAdminParticipationDetails()"></select>
+        </div>
+        <div id="admin-participation-container">
+          <p style="text-align:center; color:var(--text-muted); padding:10px;">तपशील लोड होत आहे...</p>
+        </div>
+      </div>
+
+      <!-- ४. प्रलंबित शाळा ट्रॅकर -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-clock" style="color:var(--danger);"></i> प्रलंबित शाळा ट्रॅकर</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
@@ -965,7 +1004,6 @@
     </div>
   </div>
 
-  <!-- विद्यार्थी नाव बदल Modal (केवळ भाग २ मधून उघडेल) -->
   <div class="modal" id="editStudentModal">
     <div class="modal-content" style="max-width:380px;">
       <h3 style="margin-bottom:12px; font-size:1.1rem; color:#334155;"><i class="fa-solid fa-pen-to-square" style="color:var(--sky);"></i> विद्यार्थ्याचे नाव बदला</h3>
@@ -1210,8 +1248,21 @@
       return calculatedTest;
     }
 
-    /* नवोदय १०० पैकी तर इतर तिन्ही परीक्षा ५० पैकी */
+    let CUSTOM_MAX_MARKS_STORE = {};
+
+    function listenCustomMaxMarks() {
+      db.ref('majalgaon_custom_max_marks').on('value', (snap) => {
+        CUSTOM_MAX_MARKS_STORE = snap.val() || {};
+        updateEntryMaxMarksBadge();
+        listenLiveDashboardData();
+      });
+    }
+
     function getMaxMarksForTest(category, testNo) {
+      const key = `${category}_test_${testNo}`;
+      if (CUSTOM_MAX_MARKS_STORE && CUSTOM_MAX_MARKS_STORE[key]) {
+        return parseInt(CUSTOM_MAX_MARKS_STORE[key], 10);
+      }
       if (category === 'navodaya') {
         return 100;
       }
@@ -1237,6 +1288,7 @@
       buildEntryTestOptions();
       listenLiveDashboardData();
       listenDeclaredResults();
+      listenCustomMaxMarks();
       initAdminPanelOptions();
 
       try { history.pushState({ page: 'home' }, ''); } catch(e) {}
@@ -1319,8 +1371,11 @@
       if (view === 'entry') {
         const autoTest = getAutoActiveTest(currentEntryCategory);
         document.getElementById('entry-test-no').value = autoTest;
+        document.getElementById('entry-active-test-display').innerText = `चाचणी क्रमांक ${autoTest} (सध्या चालू)`;
         updateEntryMaxMarksBadge();
         loadStudentMarksForSelectedTest();
+      } else if (view === 'admin') {
+        renderAdminParticipationDetails();
       }
       window.scrollTo(0, 0);
     }
@@ -1365,17 +1420,14 @@
     }
 
     function buildEntryTestOptions() {
-      const select = document.getElementById('entry-test-no');
-      if (!select) return;
-      select.innerHTML = '';
       const autoTest = getAutoActiveTest(currentEntryCategory);
-      for (let i = 1; i <= 10; i++) {
-        select.innerHTML += `<option value="${i}" ${i === autoTest ? 'selected' : ''}>चाचणी क्रमांक ${i}</option>`;
-      }
+      const testInp = document.getElementById('entry-test-no');
+      const testDisp = document.getElementById('entry-active-test-display');
+      if (testInp) testInp.value = autoTest;
+      if (testDisp) testDisp.innerText = `चाचणी क्रमांक ${autoTest} (सध्या चालू)`;
       updateEntryMaxMarksBadge();
     }
 
-    /* भाग ३ मधील ठळक सूचना बॅज */
     function updateEntryMaxMarksBadge() {
       const badge = document.getElementById('entry-total-marks-badge');
       const testNo = parseInt(document.getElementById('entry-test-no').value, 10) || 1;
@@ -1416,6 +1468,7 @@
       document.getElementById(`entry-chip-${cat}`).classList.add('active');
       const autoTest = getAutoActiveTest(cat);
       document.getElementById('entry-test-no').value = autoTest;
+      document.getElementById('entry-active-test-display').innerText = `चाचणी क्रमांक ${autoTest} (सध्या चालू)`;
       updateEntryMaxMarksBadge();
       resetSchoolLock();
       onClusterSelected();
@@ -1483,12 +1536,68 @@
 
       db.ref(`majalgaon_students_master/${key}`).once('value', (snapshot) => {
         currentStudentsList = snapshot.val() || [];
-        renderRegisteredStudentsManager(); // भाग २ मधील नोंदणीकृत विद्यार्थी यादी दाखवणे
-        loadStudentMarksForSelectedTest();
+        renderRegisteredStudentsManager();
+        checkAndAutoMergeWrongTestEntries(key);
       });
     }
 
-    /* ================= भाग २ मधील विद्यार्थ्यांची यादी व नाव बदल/डिलीट व्यवस्थापन ================= */
+    /* ================= ऑटो-मर्जिंग: चुकीने पुढील चाचणीत भरलेले गुण चालू चाचणीत आणणे ================= */
+    function checkAndAutoMergeWrongTestEntries(schoolDbKey) {
+      const activeTest = getAutoActiveTest(currentEntryCategory);
+      const activeRef = `majalgaon_results/${currentEntryCategory}/test_${activeTest}/${schoolDbKey}`;
+
+      db.ref(activeRef).once('value', (activeSnap) => {
+        const activeData = activeSnap.val();
+        
+        let hasActiveMarks = false;
+        if (activeData && activeData.students) {
+          hasActiveMarks = activeData.students.some(s => s.marks !== undefined && s.marks !== '');
+        }
+
+        // जर चालू चाचणीत गुण नसतील, तर पुढील चाचण्या (उदा. ७, ८, ९, १०) तपासणे
+        if (!hasActiveMarks) {
+          let checkPromises = [];
+          for (let t = activeTest + 1; t <= 10; t++) {
+            checkPromises.push(db.ref(`majalgaon_results/${currentEntryCategory}/test_${t}/${schoolDbKey}`).once('value'));
+          }
+
+          Promise.all(checkPromises).then(snapshots => {
+            let foundWrongData = null;
+            let foundTestNum = 0;
+
+            snapshots.forEach((snap, idx) => {
+              const val = snap.val();
+              const testNum = activeTest + 1 + idx;
+              if (val && val.students && val.students.some(s => s.marks !== undefined && s.marks !== '')) {
+                if (!foundWrongData) {
+                  foundWrongData = val;
+                  foundTestNum = testNum;
+                }
+              }
+            });
+
+            if (foundWrongData) {
+              showToast(`चाचणी ${foundTestNum} मधील गुण चालू चाचणी ${activeTest} मध्ये ट्रान्सफर केले जात आहेत...`);
+              foundWrongData.maxMarks = getMaxMarksForTest(currentEntryCategory, activeTest);
+              foundWrongData.updatedAt = new Date().toISOString();
+
+              // चालू चाचणीत सेव्ह करणे
+              db.ref(activeRef).set(foundWrongData).then(() => {
+                // चुकीच्या पुढील चाचणीतून गुण काढून टाकणे (लॉक करणे)
+                db.ref(`majalgaon_results/${currentEntryCategory}/test_${foundTestNum}/${schoolDbKey}`).remove();
+                showCustomAlert(`सूचना: आपण चुकीने चाचणी क्रमांक ${foundTestNum} मध्ये भरलेले गुण सध्या चालू असलेल्या चाचणी क्रमांक ${activeTest} मध्ये यशस्वीरीत्या विलीन (Merge) करण्यात आले आहेत!`);
+                loadStudentMarksForSelectedTest();
+              });
+            } else {
+              loadStudentMarksForSelectedTest();
+            }
+          });
+        } else {
+          loadStudentMarksForSelectedTest();
+        }
+      });
+    }
+
     function renderRegisteredStudentsManager() {
       const box = document.getElementById('registered-students-box');
       const listEl = document.getElementById('registered-students-list');
@@ -1636,7 +1745,6 @@
       });
     }
 
-    /* ================= भाग ३ मधील सुटसुटीत रिकामा गुण इनपुट डबा (कोणतीही चिन्हे नाहीत) ================= */
     function renderMobileStudentList(savedStudents) {
       const cont = document.getElementById('student-list-container');
       cont.innerHTML = '';
@@ -1657,7 +1765,6 @@
           }
         }
 
-        // पूर्णपणे स्वच्छ व मोकळा इनपुट डबा (No placeholder), आणि पेन्सिल/कचराकुंडी चिन्हे काढली आहेत
         cont.innerHTML += `
           <div class="student-entry-card">
             <div class="student-entry-header">
@@ -1764,7 +1871,6 @@
         const avgPercentage = (presentCount > 0 && maxM > 0) ? ((totalScore / (presentCount * maxM)) * 100).toFixed(1) + '%' : '0%';
         document.getElementById('stat-avg-score').innerText = avgPercentage;
 
-        // सर्वोच्च गुण (नवोदय 100 पैकी तर इतर 50 पैकी)
         document.getElementById('stat-max-score').innerText = `${maxScore}/${maxM}`;
         document.getElementById('stat-active-clusters').innerText = `${clusterSet.size}/${CLUSTER_LIST.length}`;
 
@@ -1958,9 +2064,21 @@
       const admPendTest = document.getElementById('admin-pending-test');
       const admPendCat = document.getElementById('admin-pending-category');
 
+      const admMmTest = document.getElementById('admin-mm-test');
+      const admPartTest = document.getElementById('admin-part-test');
+      const admPartCat = document.getElementById('admin-part-category');
+
       if (admTest) {
         admTest.innerHTML = '';
         for (let i = 1; i <= 10; i++) admTest.innerHTML += `<option value="${i}">चाचणी क्रमांक ${i}</option>`;
+      }
+      if (admMmTest) {
+        admMmTest.innerHTML = '';
+        for (let i = 1; i <= 10; i++) admMmTest.innerHTML += `<option value="${i}">चाचणी क्रमांक ${i}</option>`;
+      }
+      if (admPartTest) {
+        admPartTest.innerHTML = '';
+        for (let i = 1; i <= 10; i++) admPartTest.innerHTML += `<option value="${i}">चाचणी ${i}</option>`;
       }
       if (admPendTest) {
         admPendTest.innerHTML = '';
@@ -1974,7 +2092,44 @@
           <option value="nmms">NMMS (8 वी)</option>
         `;
       }
+      if (admPartCat) {
+        admPartCat.innerHTML = `
+          <option value="navodaya">नवोदय (5 वी)</option>
+          <option value="4th">4 थी शिष्यवृत्ती</option>
+          <option value="7th">7 वी शिष्यवृत्ती</option>
+          <option value="nmms">NMMS (8 वी)</option>
+        `;
+      }
+      loadCurrentCustomMaxMarks();
       updateAdminMaxMarksInfo();
+    }
+
+    function loadCurrentCustomMaxMarks() {
+      const cat = document.getElementById('admin-mm-category').value;
+      const testNo = parseInt(document.getElementById('admin-mm-test').value, 10) || 1;
+      const currentVal = getMaxMarksForTest(cat, testNo);
+      const inp = document.getElementById('admin-mm-input');
+      if (inp) inp.value = currentVal;
+    }
+
+    function saveCustomMaxMarks() {
+      const cat = document.getElementById('admin-mm-category').value;
+      const testNo = parseInt(document.getElementById('admin-mm-test').value, 10) || 1;
+      const val = parseInt(document.getElementById('admin-mm-input').value, 10);
+
+      if (!val || val <= 0) {
+        showCustomAlert('कृपया वैध एकूण गुण भरा (उदा. 50 किंवा 100)!');
+        return;
+      }
+
+      const key = `${cat}_test_${testNo}`;
+      db.ref(`majalgaon_custom_max_marks/${key}`).set(val).then(() => {
+        showToast('या चाचणीचे एकूण गुण सुरक्षित सेव्ह झाले!');
+        showCustomAlert(`यशस्वी! चाचणी क्रमांक ${testNo} चे एकूण गुण ${val} निश्चित केले आहेत.`);
+        updateAdminMaxMarksInfo();
+      }).catch(err => {
+        showCustomAlert('त्रुटी: ' + err.message);
+      });
     }
 
     function updateAdminMaxMarksInfo() {
@@ -2061,6 +2216,69 @@
           }).catch(err => {
             showCustomAlert('लॉकिंग त्रुटी: ' + err.message);
           });
+        });
+      });
+    }
+
+    function renderAdminParticipationDetails() {
+      const cat = document.getElementById('admin-part-category').value || 'navodaya';
+      const testNo = document.getElementById('admin-part-test').value || '1';
+      const cont = document.getElementById('admin-participation-container');
+      if (!cont) return;
+
+      db.ref(`majalgaon_results/${cat}/test_${testNo}`).once('value', (snap) => {
+        const data = snap.val() || {};
+        let clusterGroups = {};
+
+        Object.values(data).forEach(entry => {
+          const cName = entry.cluster || 'इतर केंद्र';
+          if (!clusterGroups[cName]) clusterGroups[cName] = [];
+
+          let count = 0;
+          if (entry.students && Array.isArray(entry.students)) {
+            entry.students.forEach(s => {
+              if (s.marks !== undefined && s.marks !== '') count++;
+            });
+          }
+
+          clusterGroups[cName].push({
+            school: entry.school,
+            studentCount: count
+          });
+        });
+
+        cont.innerHTML = '';
+        const clusters = Object.keys(clusterGroups).sort();
+
+        if (clusters.length === 0) {
+          cont.innerHTML = `<p style="text-align:center; color:#64748b; padding:15px;">या चाचणीत एकाही शाळेने निकाल भरलेला नाही.</p>`;
+          return;
+        }
+
+        clusters.forEach(cName => {
+          const schools = clusterGroups[cName];
+          let totalInCluster = 0;
+          let schoolHtml = '';
+
+          schools.forEach(sc => {
+            totalInCluster += sc.studentCount;
+            schoolHtml += `
+              <div class="admin-school-row">
+                <span>🏫 ${sc.school}</span>
+                <span style="font-weight:800; color:#0369a1;">${sc.studentCount} विद्यार्थी</span>
+              </div>
+            `;
+          });
+
+          cont.innerHTML += `
+            <div class="admin-cluster-card">
+              <div class="admin-cluster-header">
+                <span>📍 केंद्र: ${cName} (${schools.length} शाळा)</span>
+                <span>एकूण: ${totalInCluster} विद्यार्थी</span>
+              </div>
+              <div>${schoolHtml}</div>
+            </div>
+          `;
         });
       });
     }
