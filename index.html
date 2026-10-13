@@ -15,26 +15,32 @@
 
   <style>
     :root {
-      --primary: #0284c7;
-      --primary-light: #e0f2fe;
-      --primary-dark: #0369a1;
+      /* नवीन आकर्षक व सौम्य रंगसंगती (जांभळा व हिरवा टच) */
+      --primary: #6366f1;          /* इंडिगो-व्हायलेट (सौम्य जांभळा) */
+      --primary-light: #e0e7ff;    /* हलका जांभळा */
+      --primary-dark: #4338ca;
+      
+      --accent-green: #059669;     /* समृद्ध पाचू हिरवा */
+      --accent-green-light: #d1fae5;
+      
+      --purple-accent: #7c3aed;    /* जांभळा */
+      --purple-light: #ede9fe;
+      
       --bg: #f8fafc;
       --surface: #ffffff;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --accent: #059669;
       --danger: #dc2626;
       --gold: #d97706;
-      --gold-light: #fef3c7;
       --radius: 14px;
-      --shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
+      --shadow: 0 4px 16px rgba(99, 102, 241, 0.08);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mukta', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; min-height: 100vh; overflow-x: hidden; }
 
-    /* Header */
+    /* Top App Header */
     .app-header {
       background: white;
       position: sticky;
@@ -50,7 +56,7 @@
     }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-logo { width: 44px; height: 44px; border-radius: 8px; object-fit: contain; }
-    .brand-text h1 { font-size: 1.15rem; font-weight: 800; color: var(--primary-dark); line-height: 1.2; }
+    .brand-text h1 { font-size: 1.15rem; font-weight: 800; color: #3730a3; line-height: 1.2; }
     .brand-text p { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
     .app-container { max-width: 650px; margin: 0 auto; padding: 12px; }
@@ -66,7 +72,7 @@
     .app-card-title {
       font-size: 1.05rem;
       font-weight: 800;
-      color: var(--primary-dark);
+      color: #3730a3;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -75,7 +81,7 @@
       padding-bottom: 6px;
     }
 
-    /* Chips */
+    /* Category Chips (जांभळा शेड) */
     .chip-scroll {
       display: flex;
       gap: 8px;
@@ -88,7 +94,7 @@
     .category-chip {
       flex: 0 0 auto;
       background: white;
-      border: 2px solid var(--border);
+      border: 1.5px solid #cbd5e1;
       padding: 9px 16px;
       border-radius: 25px;
       font-size: 0.92rem;
@@ -99,15 +105,16 @@
       gap: 6px;
       white-space: nowrap;
       transition: all 0.2s;
+      color: #334155;
     }
     .category-chip.active {
-      background: var(--primary);
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
       color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+      border-color: #4f46e5;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
     }
 
-    /* Test Pills */
+    /* Test Pills Container (हिरवा शेड) */
     .test-pill-wrap {
       display: flex;
       gap: 8px;
@@ -122,7 +129,7 @@
     .test-chip {
       flex: 0 0 auto;
       background: white;
-      border: 1.5px solid var(--border);
+      border: 1.5px solid #cbd5e1;
       padding: 8px 18px;
       border-radius: 22px;
       font-size: 0.9rem;
@@ -130,12 +137,13 @@
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.2s;
+      color: #334155;
     }
     .test-chip.active {
-      background: var(--primary);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
       color: white;
-      border-color: var(--primary);
-      box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
+      border-color: #047857;
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3);
     }
 
     /* Form Controls */
@@ -171,9 +179,9 @@
       gap: 8px;
       transition: 0.2s;
     }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-primary:active { background: var(--primary-dark); }
-    .btn-success { background: var(--accent); color: white; }
+    .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color: white; }
+    .btn-primary:active { background: #4338ca; }
+    .btn-success { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; }
     .btn-outline { background: white; border: 2px solid var(--primary); color: var(--primary); }
     .btn-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
     .btn-danger { background: var(--danger); color: white; }
@@ -208,7 +216,7 @@
     }
     .btn-delete { color: var(--danger); border-color: #fecaca; }
     .btn-delete:active { background: #fee2e2; }
-    .btn-edit { color: var(--primary); border-color: #bae6fd; }
+    .btn-edit { color: var(--primary); border-color: #c7d2fe; }
 
     .student-entry-bottom {
       display: flex;
@@ -259,18 +267,30 @@
       border-color: #fca5a5;
     }
 
-    /* Stats Grid */
+    /* आकर्षक 4 Stats Grid (संतुलित रंगसंगती) */
     .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
     .stat-box {
       background: white;
       border-radius: var(--radius);
       padding: 12px 14px;
       border: 1px solid var(--border);
-      border-left: 5px solid var(--primary);
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
     .stat-box p { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
-    .stat-box h2 { font-size: 1.45rem; font-weight: 800; color: var(--text); }
+    .stat-box h2 { font-size: 1.45rem; font-weight: 800; }
+    
+    /* स्वतंत्र बॉर्डर व पार्श्वभूमी */
+    .stat-box-students { border-left: 5px solid #7c3aed; background: linear-gradient(to right, #faf5ff, #ffffff); }
+    .stat-box-students h2 { color: #6b21a8; }
+    
+    .stat-box-avg { border-left: 5px solid #059669; background: linear-gradient(to right, #f0fdf4, #ffffff); }
+    .stat-box-avg h2 { color: #065f46; }
+    
+    .stat-box-max { border-left: 5px solid #d97706; background: linear-gradient(to right, #fffbeb, #ffffff); }
+    .stat-box-max h2 { color: #92400e; }
+    
+    .stat-box-clusters { border-left: 5px solid #0284c7; background: linear-gradient(to right, #f0f9ff, #ffffff); }
+    .stat-box-clusters h2 { color: #075985; }
 
     /* Leaderboard Cards */
     .topper-card {
@@ -288,8 +308,8 @@
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: var(--primary-light);
-      color: var(--primary-dark);
+      background: #ede9fe;
+      color: #6b21a8;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -303,15 +323,15 @@
     .topper-details p { font-size: 0.78rem; color: var(--text-muted); }
     .topper-score { text-align: right; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
     .topper-score-badge {
-      background: #e0f2fe;
-      color: #0369a1;
+      background: #d1fae5;
+      color: #065f46;
       padding: 3px 10px;
       border-radius: 14px;
       font-weight: 800;
       font-size: 0.88rem;
     }
 
-    /* 3-Tab Bottom Navigation with Golden Center */
+    /* 3-Tab Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -347,12 +367,11 @@
     }
     .nav-item i { font-size: 1.2rem; }
     .nav-item.active {
-      background: var(--primary);
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
       color: #ffffff;
-      border-color: var(--primary-dark);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      border-color: #4338ca;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
     }
-    /* मध्यभागी सुवर्ण टॅब */
     .nav-item-gold {
       background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
       color: #78350f;
@@ -671,7 +690,7 @@
 
   <div class="app-container">
 
-    <!-- ================= 1. डॅशबोर्ड स्क्रीन (स्वच्छ स्क्रीन - 4 बटणे काढली) ================= -->
+    <!-- ================= 1. डॅशबोर्ड स्क्रीन ================= -->
     <div id="screen-dashboard">
       <div class="chip-scroll">
         <button class="category-chip active" onclick="selectDashboardCategory('navodaya', this)"><i class="fa-solid fa-school-flag"></i> नवोदय (5 वी)</button>
@@ -684,20 +703,21 @@
         <div class="test-pill-wrap" id="dash-test-pills"></div>
       </div>
 
+      <!-- रंगीबेरंगी व संतुलित Stats Grid -->
       <div class="stats-grid">
-        <div class="stat-box">
+        <div class="stat-box stat-box-students">
           <p>प्रविष्ट विद्यार्थी</p>
           <h2 id="stat-total-students">0</h2>
         </div>
-        <div class="stat-box">
+        <div class="stat-box stat-box-avg">
           <p>सरासरी टक्केवारी</p>
           <h2 id="stat-avg-score">0%</h2>
         </div>
-        <div class="stat-box">
+        <div class="stat-box stat-box-max">
           <p>सर्वोच्च गुण</p>
           <h2 id="stat-max-score">0/100</h2>
         </div>
-        <div class="stat-box">
+        <div class="stat-box stat-box-clusters">
           <p>सहभागी केंद्रे</p>
           <h2 id="stat-active-clusters">0/14</h2>
         </div>
@@ -720,7 +740,6 @@
 
     <!-- ================= 2. टॉपर्स पहा स्क्रीन (नवीन स्क्रीन) ================= -->
     <div id="screen-toppers-view" style="display:none;">
-      <!-- Category Chips -->
       <div class="chip-scroll">
         <button class="category-chip active" id="topper-cat-navodaya" onclick="selectTopperCategory('navodaya')">नवोदय (5 वी)</button>
         <button class="category-chip" id="topper-cat-4th" onclick="selectTopperCategory('4th')">4 थी शिष्यवृत्ती</button>
@@ -839,11 +858,11 @@
       </div>
     </div>
 
-    <!-- ================= 4. गटशिक्षणाधिकारी गुप्त बॅकएंड स्क्रीन (Secret Admin Panel) ================= -->
+    <!-- ================= 4. गटशिक्षणाधिकारी गुप्त बॅकएंड स्क्रीन ================= -->
     <div id="screen-admin-backend" style="display:none;">
-      <div class="app-card" style="border: 2px solid var(--primary); background: #f0f9ff;">
+      <div class="app-card" style="border: 2px solid var(--primary); background: #f0fdf4;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <h3 style="color:var(--primary-dark); font-size:1.1rem;"><i class="fa-solid fa-user-shield"></i> गटशिक्षणाधिकारी प्रशासकीय कक्ष</h3>
+          <h3 style="color:#065f46; font-size:1.1rem;"><i class="fa-solid fa-user-shield"></i> गटशिक्षणाधिकारी प्रशासकीय कक्ष</h3>
           <button class="app-btn btn-outline" style="width:auto; height:30px; font-size:0.75rem; padding:0 8px;" onclick="switchTab('dashboard')">बंद करा</button>
         </div>
         <p style="font-size:0.82rem; color:#475569;">
@@ -853,7 +872,7 @@
 
       <!-- निकाल लॉक करा विभाग -->
       <div class="app-card">
-        <div class="app-card-title"><i class="fa-solid fa-lock" style="color:var(--accent);"></i> अधिकृत टॉपर्स निकाल जाहीर व लॉक करा</div>
+        <div class="app-card-title"><i class="fa-solid fa-lock" style="color:var(--accent-green);"></i> अधिकृत टॉपर्स निकाल जाहीर व लॉक करा</div>
         <div class="form-group">
           <label>परीक्षेचा प्रकार निवडा:</label>
           <select class="form-control" id="admin-lock-category">
@@ -871,7 +890,7 @@
           <i class="fa-solid fa-shield-halved"></i> 📢 तालुका व केंद्रनिहाय टॉपर्स निकाल लॉक करा
         </button>
         <p style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
-          * सूचना: एकदा निकाल जाहीर केल्यावर तो सर्व शाळांसाठी कायमस्वरूपी अधिकृत मानला जाईल. त्यानंतर शाळांनी भरलेल्या गुणांचा या टॉपर्सवर परिणाम होणार नाही.
+          * सूचना: एकदा निकाल जाहीर केल्यावर तो सर्व शाळांसाठी कायमस्वरूपी अधिकृत मानला जाईल.
         </p>
       </div>
 
@@ -1162,7 +1181,7 @@
   <div class="toast" id="toastMsg">माहिती सेव्ह झाली!</div>
 
   <script>
-    /* ================= १. माजलगाव तालुक्यातील सर्व २२६ शाळांचा इनबिल्ट डेटा ================= */
+    /* ================= १. माजलगाव तालुक्यातील सर्व २२६ शाळांचा इनबिल्ट डेटा[span_8](start_span)[span_8](end_span) ================= */
     const EMBEDDED_MAJALGAON_SCHOOLS = [
       {"c":"27270712201","n":"CPS BADIBADI","k":"बडीबाडी","l":1,"h":8},{"c":"27270712301","n":"ZPPS ABEGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270712401","n":"ZPPS CHHATRA BORGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270712901","n":"ZPPS GOVINDPUR","k":"बडीबाडी","l":1,"h":8},{"c":"27270713101","n":"ZPPS HANUMAN NAGAR TANDA","k":"बडीबाडी","l":1,"h":8},{"c":"27270712601","n":"ZPPS KHARAT ADGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270715501","n":"ZPPS NAGADGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270715502","n":"ZPPS NAGADGAON TANDA","k":"बडीबाडी","l":1,"h":8},{"c":"27270712801","n":"ZPPS NIPANI TAKLI","k":"बडीबाडी","l":1,"h":8},{"c":"27270712203","n":"ZPPS PHULENAGARVASTI BADIBADI","k":"बडीबाडी","l":1,"h":8},{"c":"27270712701","n":"ZPPS ROSHANPURI","k":"बडीबाडी","l":1,"h":8},{"c":"27270713001","n":"ZPPS SANDAS CHINCHOLI WASAHA","k":"बडीबाडी","l":1,"h":8},{"c":"27270712501","n":"ZPPS SANDASCHINCHOLI","k":"बडीबाडी","l":1,"h":8},
       {"c":"27270702301","n":"CPS EKDARA","k":"एकदरा","l":1,"h":8},{"c":"27270702601","n":"ZPPS DUBBA (M)","k":"एकदरा","l":1,"h":8},{"c":"27270702702","n":"ZPPS IRLA (MANJARA) NO 2","k":"एकदरा","l":1,"h":8},{"c":"27270703101","n":"ZPPS JAWLA","k":"एकदरा","l":1,"h":8},{"c":"27270703001","n":"ZPPS KHERDA (KU)","k":"एकदरा","l":1,"h":8},{"c":"27270702801","n":"ZPPS PHULPIMPALGAON","k":"एकदरा","l":1,"h":8},{"c":"27270702401","n":"ZPPS PUNGNI","k":"एकदरा","l":1,"h":8},{"c":"27270702501","n":"ZPPS TELGAON (KU)","k":"एकदरा","l":1,"h":8},
@@ -1229,7 +1248,6 @@
     let currentRawResults = {};
     let cachedPendingSchools = [];
 
-    // गुप्त ॲडमिन क्लिक काउंटर
     let toppersTabClickCount = 0;
     let toppersClickTimer = null;
 
@@ -1305,7 +1323,6 @@
       window.scrollTo(0, 0);
     }
 
-    /* ३ वेळेस क्लिक केल्यास गुप्त ॲडमिन कक्ष (PIN: 2026) */
     function handleToppersTabClick() {
       toppersTabClickCount++;
       clearTimeout(toppersClickTimer);
@@ -1421,7 +1438,6 @@
       });
     }
 
-    /* शाळा निवडीतून वर्ग काढून फक्त शाळेचे नाव दाखवणे */
     function onClusterSelected() {
       const cluster = document.getElementById('entry-cluster').value;
       const schoolSelect = document.getElementById('entry-school');
@@ -1752,7 +1768,7 @@
       });
     }
 
-    /* ================= 4. अधिकृत जाहीर निकाल (Declared Results Engine) ================= */
+    /* ================= 4. अधिकृत जाहीर निकाल ================= */
     let DECLARED_DATA_STORE = {};
 
     function listenDeclaredResults() {
@@ -1869,7 +1885,7 @@
       document.getElementById('bestSchoolModal').style.display = 'flex';
     }
 
-    /* ================= 5. ॲडमिन पॅनल ऑपरेशन्स (Declare & Lock Engine) ================= */
+    /* ================= 5. ॲडमिन पॅनल ऑपरेशन्स ================= */
     function initAdminPanelOptions() {
       const admTest = document.getElementById('admin-lock-test');
       const admPendTest = document.getElementById('admin-pending-test');
@@ -1901,7 +1917,6 @@
 
       showToast('गुणांची गणना व लॉकिंग सुरू आहे...');
 
-      // Firebase वरून चालू चाचणीचे गुण गोळा करणे
       db.ref(`majalgaon_results/${cat}/test_${testNo}`).once('value', (snap) => {
         const data = snap.val() || {};
         let allStudents = [];
@@ -1944,18 +1959,15 @@
           }
         });
 
-        // १. तालुका Top 10
         allStudents.sort((a,b) => b.marks - a.marks);
         const talukaToppers = allStudents.slice(0, 10);
 
-        // २. प्रत्येक केंद्रातील Top 10
         let clusterToppers = {};
         Object.keys(clusterWise).forEach(cName => {
           clusterWise[cName].sort((a,b) => b.marks - a.marks);
           clusterToppers[cName] = clusterWise[cName].slice(0, 10);
         });
 
-        // Payload तयार करणे
         const payload = {
           declaredAt: new Date().toISOString(),
           talukaToppers: talukaToppers,
@@ -1963,7 +1975,6 @@
           bestSchool: bestSchoolObj
         };
 
-        // कायमस्वरूपी Firebase वर लॉक करणे
         db.ref(`majalgaon_declared_toppers/${cat}/test_${testNo}`).set(payload).then(() => {
           alert(`अभिनंदन! चाचणी क्र. ${testNo} चे निकाल यशस्वीरित्या जाहीर व लॉक झाले आहेत!`);
           showToast('निकाल यशस्वीरित्या जाहीर झाले!');
@@ -2041,7 +2052,7 @@
       });
     }
 
-    /* ================= Top 10 बॅनर PDF (A4 Portrait Fit) ================= */
+    /* ================= Top 10 बॅनर PDF ================= */
     function downloadBannerPDF() {
       const { jsPDF } = window.jspdf;
       const card = document.getElementById('banner-card-render');
@@ -2074,7 +2085,7 @@
       });
     }
 
-    /* ================= प्रमाणपत्र PDF (A4 Landscape Fit + Student Name) ================= */
+    /* ================= प्रमाणपत्र PDF ================= */
     let currentCertStudentName = 'विद्यार्थी';
 
     function openCertificateModal(name, school, udise, cluster, marks, rankText, gender) {
