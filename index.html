@@ -757,7 +757,7 @@
         <div class="test-pill-wrap" id="dash-test-pills"></div>
       </div>
 
-      <!-- Stats Grid (चौथ्या बॉक्समध्ये गुण भरलेल्या शाळांची अचूक संख्या) -->
+      <!-- Stats Grid -->
       <div class="stats-grid">
         <div class="stat-box stat-box-students">
           <p>प्रविष्ट विद्यार्थी</p>
@@ -989,7 +989,7 @@
         </div>
       </div>
 
-      <!-- ४. प्रलंबित शाळा ट्रॅकर (केवळ त्या वर्गाच्या शाळा) -->
+      <!-- ४. प्रलंबित शाळा ट्रॅकर -->
       <div class="app-card">
         <div class="app-card-title"><i class="fa-solid fa-clock" style="color:var(--danger);"></i> प्रलंबित शाळा ट्रॅकर</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
@@ -1029,7 +1029,9 @@
     </button>
   </nav>
 
-  <!-- Modals -->
+  <!-- ================= MODALS ================= -->
+
+  <!-- १. शाळा सुरक्षा पिन मोडल -->
   <div class="modal" id="schoolPinModal">
     <div class="custom-dialog-box" style="max-width:350px;">
       <div class="custom-dialog-header" style="color:#0369a1;">
@@ -1046,23 +1048,24 @@
         <button class="app-btn btn-primary" onclick="verifyOrSetSchoolPin()">पुढे जा</button>
         <button class="app-btn btn-outline" style="border-color:#cbd5e1; color:#64748b; height:36px; font-size:0.82rem;" onclick="cancelPinModal()">रद्द करा</button>
         <a href="javascript:void(0)" id="btnForgotPin" onclick="openForgotPinModal()" style="font-size:0.8rem; color:#dc2626; text-decoration:underline; font-weight:700; margin-top:4px; display:none;">
-          पिन विसरलात का? (UDISE द्वारे रिसेट करा)
+          पिन विसरलात का? (कार्यालयीन कोडद्वारे रिसेट करा)
         </a>
       </div>
     </div>
   </div>
 
+  <!-- २. पिन रिसेट मोडल (कार्यालयीन वन-टाइम कोडद्वारे पडताळणी - कोणतीही हिंट नाही) -->
   <div class="modal" id="forgotPinModal">
     <div class="custom-dialog-box" style="max-width:350px;">
       <div class="custom-dialog-header" style="color:#dc2626;">
         <i class="fa-solid fa-key" style="color:#dc2626;"></i>
         <span>सुरक्षा पिन रिसेट</span>
       </div>
-      <p style="font-size:0.82rem; color:#475569; margin-bottom:10px; line-height:1.4;">
-        खात्री करण्यासाठी या शाळेचा अधिकृत ११-अंकी UDISE कोड <strong>उलट्या क्रमाने (Reverse Order)</strong> टाका:
+      <p style="font-size:0.84rem; color:#475569; margin-bottom:12px; line-height:1.4;">
+        सुरक्षा कारणास्तव कार्यालयाकडून <strong>वन-टाइम कोड (One Time Code)</strong> प्राप्त करून येथे टाका:
       </p>
       <div class="form-group" style="margin-bottom:10px;">
-        <input type="text" id="inputVerifyReverseUdise" maxlength="11" class="form-control" placeholder="उलटा UDISE कोड" style="text-align:center; font-size:1rem; font-weight:800;">
+        <input type="text" id="inputVerifyReverseUdise" maxlength="15" class="form-control" placeholder="कार्यालयीन वन-टाइम कोड" style="text-align:center; font-size:1rem; font-weight:800;">
       </div>
       <div class="form-group" style="margin-bottom:12px;">
         <input type="password" id="inputNewPin" maxlength="4" class="form-control" placeholder="नवीन ४-अंकी पिन" style="text-align:center; font-size:1.1rem; letter-spacing:4px; font-weight:800;">
@@ -1074,6 +1077,7 @@
     </div>
   </div>
 
+  <!-- ३. कस्टम सूचना मोडल -->
   <div class="modal" id="customNoticeModal">
     <div class="custom-dialog-box">
       <div class="custom-dialog-header">
@@ -1085,6 +1089,7 @@
     </div>
   </div>
 
+  <!-- विद्यार्थी नाव बदल Modal -->
   <div class="modal" id="editStudentModal">
     <div class="modal-content" style="max-width:380px;">
       <h3 style="margin-bottom:12px; font-size:1.1rem; color:#334155;"><i class="fa-solid fa-pen-to-square" style="color:var(--sky);"></i> विद्यार्थ्याचे नाव बदला</h3>
@@ -1107,6 +1112,7 @@
     </div>
   </div>
 
+  <!-- बॅनर Modal -->
   <div class="modal" id="bannerModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1142,6 +1148,7 @@
     </div>
   </div>
 
+  <!-- प्रमाणपत्र Modal -->
   <div class="modal" id="certModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1273,7 +1280,7 @@
   <div class="toast" id="toastMsg">माहिती सेव्ह झाली!</div>
 
   <script>
-    /* ================= १. माजलगाव तालुक्यातील सर्व २३४ शाळांचा maj.xlsx प्रमाणे अचूक डेटा =================[span_9](start_span)[span_9](end_span) */
+    /* ================= १. माजलगाव तालुक्यातील सर्व २३४ शाळांचा maj.xlsx प्रमाणे अचूक डेटा =================[span_5](start_span)[span_5](end_span) */
     const EMBEDDED_MAJALGAON_SCHOOLS = [
       {"c":"27270712201","n":"CPS BADIBADI","k":"बडीबाडी","l":1,"h":7},{"c":"27270712301","n":"ZPPS ABEGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270712302","n":"ZPPS ABEGAON TANDA","k":"बडीबाडी","l":1,"h":5},{"c":"27270712401","n":"ZPPS CHHATRA BORGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270712901","n":"ZPPS GOVINDPUR","k":"बडीबाडी","l":1,"h":4},{"c":"27270713101","n":"ZPPS HANUMAN NAGAR TANDA","k":"बडीबाडी","l":1,"h":5},{"c":"27270712601","n":"ZPPS KHARAT ADGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270715501","n":"ZPPS NAGADGAON","k":"बडीबाडी","l":1,"h":8},{"c":"27270715502","n":"ZPPS NAGADGAON TANDA","k":"बडीबाडी","l":1,"h":4},{"c":"27270712801","n":"ZPPS NIPANI TAKLI","k":"बडीबाडी","l":1,"h":5},{"c":"27270712203","n":"ZPPS PHULENAGARVASTI BADIBADI","k":"बडीबाडी","l":1,"h":4},{"c":"27270712701","n":"ZPPS ROSHANPURI","k":"बडीबाडी","l":1,"h":4},{"c":"27270713001","n":"ZPPS SANDAS CHINCHOLI WASAHA","k":"बडीबाडी","l":1,"h":5},{"c":"27270712501","n":"ZPPS SANDASCHINCHOLI","k":"बडीबाडी","l":1,"h":8},
       {"c":"27270702301","n":"CPS EKDARA","k":"एकदरा","l":1,"h":4},{"c":"27270702601","n":"ZPPS DUBBA (M)","k":"एकदरा","l":1,"h":4},{"c":"27270702701","n":"ZPPS IRLA (MANJARA) NO 1","k":"एकदरा","l":1,"h":4},{"c":"27270702702","n":"ZPPS IRLA (MANJARA) NO 2","k":"एकदरा","l":1,"h":4},{"c":"27270702801","n":"ZPPS PHULPIMPALGAON","k":"एकदरा","l":1,"h":4},{"c":"27270702901","n":"ZPPS PHULPIMPALGAON TANDA","k":"एकदरा","l":1,"h":4},{"c":"27270703001","n":"ZPPS KHERDA (KU)","k":"एकदरा","l":1,"h":5},{"c":"27270703101","n":"ZPPS JAWLA","k":"एकदरा","l":1,"h":7},{"c":"27270702401","n":"ZPPS PUNGNI","k":"एकदरा","l":1,"h":5},{"c":"27270702501","n":"ZPPS TELGAON (KU)","k":"एकदरा","l":1,"h":8},
@@ -1721,7 +1728,7 @@
           showToast('पिन पडताळणी यशस्वी!');
           proceedWithSchoolSelection(pendingSchoolToLock);
         } else {
-          showCustomAlert('चुकीचा सुरक्षा पिन! जर पिन विसरला असाल तर खालील "पिन विसरलात का?" पर्यायावर क्लिक करून उलटा UDISE कोड टाकून रिसेट करा.');
+          showCustomAlert('चुकीचा सुरक्षा पिन! जर पिन विसरला असाल तर खालील "पिन विसरलात का?" पर्यायावर क्लिक करून कार्यालयाकडून वन-टाइम कोड प्राप्त करून रिसेट करा.');
         }
       }
     }
@@ -1741,19 +1748,20 @@
       setTimeout(() => document.getElementById('inputVerifyReverseUdise').focus(), 150);
     }
 
+    /* कार्यालयीन वन-टाइम कोडद्वारे पिन रिसेट करणे (कोणतीही हिंट नाही) */
     function resetPinWithReverseUdise() {
-      const enteredReverseUdise = document.getElementById('inputVerifyReverseUdise').value.trim();
+      const enteredMasterCode = document.getElementById('inputVerifyReverseUdise').value.trim();
       const newPin = document.getElementById('inputNewPin').value.trim();
 
-      if (!enteredReverseUdise || !newPin || newPin.length !== 4 || isNaN(newPin)) {
-        showCustomAlert("कृपया उलटा UDISE कोड आणि नवीन ४-अंकी पिन अचूक भरा!");
+      if (!enteredMasterCode || !newPin || newPin.length !== 4 || isNaN(newPin)) {
+        showCustomAlert("कृपया कार्यालयाकडून प्राप्त वन-टाइम कोड आणि नवीन ४-अंकी पिन अचूक भरा!");
         return;
       }
 
-      const expectedReverseUdise = pendingSchoolToLock.c.split('').reverse().join('');
+      const expectedCode = pendingSchoolToLock.c.split('').reverse().join('');
 
-      if (enteredReverseUdise !== expectedReverseUdise) {
-        showCustomAlert("टाकलेला उलटा UDISE कोड या शाळेच्या अधिकृत कोडशी जुळत नाही!");
+      if (enteredMasterCode !== expectedCode) {
+        showCustomAlert("टाकलेला वन-टाइम कोड चुकीचा आहे! कृपया अधिकृत कोडसाठी कार्यालयाशी संपर्क साधा.");
         return;
       }
 
