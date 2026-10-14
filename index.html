@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>महत्त्वाची सूचना | शिक्षण विभाग पंचायत समिती माजलगाव</title>
+  <title>तालुका पोर्टल बंद | जिल्हा पोर्टलवर पुनर्निर्देशन</title>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -14,9 +14,10 @@
       --bg: #f8fafc;
       --surface: #ffffff;
       --text: #0f172a;
-      --text-muted: #475569;
+      --text-muted: #64748b;
       --border: #e2e8f0;
-      --radius: 18px;
+      --danger: #dc2626;
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mukta', sans-serif; }
@@ -33,69 +34,48 @@
 
     .notice-card {
       background: var(--surface);
-      max-width: 580px;
+      max-width: 520px;
       width: 100%;
       border-radius: var(--radius);
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
       border: 1px solid var(--border);
-      border-top: 6px solid var(--kesari);
-      padding: 28px 24px;
+      border-top: 6px solid var(--danger);
+      padding: 32px 24px;
       text-align: center;
     }
 
-    .header-badge {
+    .alert-icon {
+      width: 64px;
+      height: 64px;
+      background: #fee2e2;
+      color: var(--danger);
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #fee2e2;
-      color: #991b1b;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin-bottom: 14px;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
     }
 
     .notice-title {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      color: #1e293b;
+      color: #991b1b;
       line-height: 1.3;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
-    .notice-sub {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--sky-dark);
-      margin-bottom: 18px;
-    }
-
-    .order-box {
-      background: #fffbeb;
-      border: 1.5px solid #fde68a;
-      border-left: 5px solid #d97706;
-      border-radius: 12px;
-      padding: 16px;
-      text-align: left;
+    .notice-desc {
+      font-size: 1.05rem;
+      color: #334155;
+      line-height: 1.6;
+      font-weight: 600;
       margin-bottom: 20px;
     }
 
-    .order-box h4 {
-      font-size: 1rem;
+    .notice-desc strong {
+      color: var(--sky-dark);
       font-weight: 800;
-      color: #92400e;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .order-box p {
-      font-size: 0.94rem;
-      color: #334155;
-      line-height: 1.55;
-      font-weight: 600;
     }
 
     .timer-wrap {
@@ -103,19 +83,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 16px 0;
+      margin: 12px 0 20px 0;
     }
 
     .countdown-circle {
-      width: 76px;
-      height: 76px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: #f0f9ff;
       border: 3.5px solid var(--sky);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 800;
       font-family: 'Poppins', sans-serif;
       color: var(--sky-dark);
@@ -124,7 +104,7 @@
     }
 
     .redirect-note {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       font-weight: 700;
     }
@@ -142,9 +122,8 @@
       border-radius: 12px;
       font-weight: 800;
       font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
       transition: all 0.2s;
-      margin-top: 14px;
     }
 
     .btn-redirect:active {
@@ -156,27 +135,23 @@
 <body>
 
 <div class="notice-card">
-  <div class="header-badge">
-    <i class="fa-solid fa-triangle-exclamation"></i> कार्यालयीन सूचना
+  <div class="alert-icon">
+    <i class="fa-solid fa-ban"></i>
   </div>
 
-  <h2 class="notice-title">पंचायत समिती माजलगाव - शिक्षण विभाग</h2>
-  <p class="notice-sub">सराव परीक्षा गुण संकलन पोर्टल</p>
-
-  <div class="order-box">
-    <h4><i class="fa-solid fa-bullhorn"></i> मा. गटशिक्षणाधिकारी साहेब यांच्या सूचनेनुसार:</h4>
-    <p>
-      तालुका स्तरावरील हे पोर्टल आता बंद करण्यात आले आहे. सर्व शाळांनी यापुढील सर्व सराव परीक्षांचे गुण व विद्यार्थी माहिती थेट <strong>जिल्हा परिषद बीड</strong> यांच्या अधिकृत जिल्हा पोर्टलवरच नोंदवायची आहे.
-    </p>
-  </div>
+  <h2 class="notice-title">तालुका पोर्टल बंद करण्यात आले आहे</h2>
+  
+  <p class="notice-desc">
+    सर्व शाळांसाठी तालुका पोर्टल आता बंद करण्यात आले असून, यापुढे सर्व सराव परीक्षांचे गुण थेट <strong>जिल्हा परिषद बीड</strong> यांच्या अधिकृत <strong>जिल्हा पोर्टलवर</strong> नोंदवायचे आहेत.
+  </p>
 
   <div class="timer-wrap">
-    <div class="countdown-circle" id="countdown">10</div>
-    <p class="redirect-note">सेकंदात आपणास जिल्हा पोर्टलवर पाठवले जात आहे...</p>
+    <div class="countdown-circle" id="countdown">5</div>
+    <p class="redirect-note">सेकंदात जिल्हा पोर्टल सुरू होत आहे...</p>
   </div>
 
   <a id="btnGoDistrict" href="https://padmakarshinde043-byte.github.io/TEST-DATABASE/" class="btn-redirect">
-    <span>आत्ताच जिल्हा पोर्टलवर जा</span>
+    <span>आत्ताच जिल्हा पोर्टल उघडा</span>
     <i class="fa-solid fa-arrow-right"></i>
   </a>
 </div>
@@ -187,7 +162,7 @@
   
   document.getElementById("btnGoDistrict").href = DISTRICT_PORTAL_URL;
 
-  let timeLeft = 10;
+  let timeLeft = 5;
   const countEl = document.getElementById("countdown");
 
   const timer = setInterval(() => {
